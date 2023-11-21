@@ -84,7 +84,10 @@
             "symfony serve"
         ]
     },
-    "conflict": {
+    "scripts-descriptions": {
+        "start": " lance le server web de test symfony sans restriction de temps d'execution"
+    },
+        "conflict": {
         "symfony/symfony": "*"
     },
     "extra": {
