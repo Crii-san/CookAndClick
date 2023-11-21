@@ -82,6 +82,9 @@
         "start" : [
             "Composer\\Config::disableProcessTimeout",
             "symfony serve"
+        ],
+        "fix:cs": [
+            "php-cs-fixer fix"
         ]
     },
     "scripts-descriptions": {
