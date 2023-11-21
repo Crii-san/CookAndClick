@@ -85,6 +85,10 @@
         ],
         "fix:cs": [
             "php-cs-fixer fix"
+        ],
+        "test": [
+            "@test:cs",
+            "@test:codeception"
         ]
     },
     "scripts-descriptions": {
