@@ -15,4 +15,11 @@ pour ouvrir le projet sur phpstrom -> ``phpstorm & .``
 Il faut installer 'PHP Cs fixer': 
 - Cherchez le nom du paquet correspondant à CS Fixer avec  -> ``composer search cs-fixer``
 - Lancez l'installation de PHP CS Fixer en utilisant la commande require combinée à l'option --dev de composer -> ``composer require friendsofphp/php-cs-fixer --dev``
-- Faire les manipulation dans phpStorm File/settings/qualityTools. 
+- Faire les manipulation dans phpStorm File/settings/qualityTools.
+
+### script composer
+_Les commandes_ :  
+
+``composer start``  -> lance le server web de symfony  
+``test:cs`` -> lance la verification de code par PHP CS Fixer  
+``fix:cs`` -> lance la correction du code par PHP CS Fixer  
