@@ -11,7 +11,7 @@ class Etape
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private int $idEtape;
+    private ?int $idEtape = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $numeroEtape = null;

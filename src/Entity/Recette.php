@@ -11,7 +11,7 @@ class Recette
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private int $idRecette;
+    private ?int $idRecette = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $nomRecette = null;
