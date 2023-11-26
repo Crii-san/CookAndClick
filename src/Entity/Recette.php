@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\RecetteRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: RecetteRepository::class)]
+class Recette
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $nomRecette = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $typeRecette = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $nivDifficulte = null;
+
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $descriptionRecette = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nbPersonne = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $durée = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNomRecette(): ?string
+    {
+        return $this->nomRecette;
+    }
+
+    public function setNomRecette(?string $nomRecette): static
+    {
+        $this->nomRecette = $nomRecette;
+
+        return $this;
+    }
+
+    public function getTypeRecette(): ?string
+    {
+        return $this->typeRecette;
+    }
+
+    public function setTypeRecette(?string $typeRecette): static
+    {
+        $this->typeRecette = $typeRecette;
+
+        return $this;
+    }
+
+    public function getNivDifficulte(): ?string
+    {
+        return $this->nivDifficulte;
+    }
+
+    public function setNivDifficulte(?string $nivDifficulte): static
+    {
+        $this->nivDifficulte = $nivDifficulte;
+
+        return $this;
+    }
+
+    public function getDescriptionRecette(): ?string
+    {
+        return $this->descriptionRecette;
+    }
+
+    public function setDescriptionRecette(?string $descriptionRecette): static
+    {
+        $this->descriptionRecette = $descriptionRecette;
+
+        return $this;
+    }
+
+    public function getNbPersonne(): ?int
+    {
+        return $this->nbPersonne;
+    }
+
+    public function setNbPersonne(?int $nbPersonne): static
+    {
+        $this->nbPersonne = $nbPersonne;
+
+        return $this;
+    }
+
+    public function getDurée(): ?string
+    {
+        return $this->durée;
+    }
+
+    public function setDurée(?string $durée): static
+    {
+        $this->durée = $durée;
+
+        return $this;
+    }
+}
