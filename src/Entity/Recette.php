@@ -11,7 +11,7 @@ class Recette
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $idRecette;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $nomRecette = null;
@@ -29,11 +29,11 @@ class Recette
     private ?int $nbPersonne = null;
 
     #[ORM\Column(length: 10, nullable: true)]
-    private ?string $durée = null;
+    private ?string $duree = null;
 
-    public function getId(): ?int
+    public function getIdRecette(): ?int
     {
-        return $this->id;
+        return $this->idRecette;
     }
 
     public function getNomRecette(): ?string
@@ -96,14 +96,14 @@ class Recette
         return $this;
     }
 
-    public function getDurée(): ?string
+    public function getDuree(): ?string
     {
-        return $this->durée;
+        return $this->duree;
     }
 
-    public function setDurée(?string $durée): static
+    public function setDuree(?string $duree): static
     {
-        $this->durée = $durée;
+        $this->duree = $duree;
 
         return $this;
     }
