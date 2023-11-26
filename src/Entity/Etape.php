@@ -11,7 +11,7 @@ class Etape
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $idEtape;
 
     #[ORM\Column(nullable: true)]
     private ?int $numeroEtape = null;
@@ -19,9 +19,9 @@ class Etape
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descriptionEtape = null;
 
-    public function getId(): ?int
+    public function getIdEtape(): ?int
     {
-        return $this->id;
+        return $this->idEtape;
     }
 
     public function getNumeroEtape(): ?int
