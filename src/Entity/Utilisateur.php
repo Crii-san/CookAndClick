@@ -36,7 +36,7 @@ class Utilisateur
     private ?string $mdp = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idAllergene', nullable: false)]
     private ?Allergene $idAllergene = null;
 
     #[ORM\ManyToOne]
