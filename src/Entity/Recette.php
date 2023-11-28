@@ -32,12 +32,10 @@ class Recette
     private ?string $duree = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
     #[ORM\JoinColumn(referencedColumnName: 'idAdmin', nullable: false)]
     private ?Administrateur $idAdmin = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
     #[ORM\JoinColumn(referencedColumnName: 'idUtil', nullable: false)]
     private ?Utilisateur $idUtil = null;
 
