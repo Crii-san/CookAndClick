@@ -16,6 +16,10 @@ class DetailRecetteIngredient
     #[ORM\Column]
     private ?int $quantile = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(referencedColumnName: 'idRecette',nullable: false)]
+    private ?Recette $idRecette = null;
+
     public function getIdDetail(): ?int
     {
         return $this->idDetail;
@@ -36,6 +40,18 @@ class DetailRecetteIngredient
     public function setQuantile(int $quantile): static
     {
         $this->quantile = $quantile;
+
+        return $this;
+    }
+
+    public function getIdRecette(): ?Recette
+    {
+        return $this->idRecette;
+    }
+
+    public function setIdRecette(?Recette $idRecette): static
+    {
+        $this->idRecette = $idRecette;
 
         return $this;
     }
