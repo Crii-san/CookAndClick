@@ -26,9 +26,8 @@ class Ingredient
     private ?string $descriptionIngredient = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idAllergene', nullable: false)]
     private ?Allergene $idAllergene = null;
-
 
     public function getIdIngredient(): ?int
     {
