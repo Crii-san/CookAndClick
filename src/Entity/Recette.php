@@ -33,11 +33,11 @@ class Recette
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Administrateur $Administrateur = null;
+    private ?Administrateur $idAdmin = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $Utilisateur = null;
+    private ?Utilisateur $idUtil = null;
 
     public function getIdRecette(): ?int
     {
@@ -116,26 +116,26 @@ class Recette
         return $this;
     }
 
-    public function getAdministrateur(): ?Administrateur
+    public function getIdAdmin(): ?Administrateur
     {
-        return $this->Administrateur;
+        return $this->idAdmin;
     }
 
-    public function setAdministrateur(?Administrateur $Administrateur): static
+    public function setIdAdmin(?Administrateur $idAdmin): static
     {
-        $this->Administrateur = $Administrateur;
+        $this->idAdmin = $idAdmin;
 
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateur
+    public function getIdUtil(): ?Utilisateur
     {
-        return $this->Utilisateur;
+        return $this->idUtil;
     }
 
-    public function setUtilisateur(?Utilisateur $Utilisateur): static
+    public function setIdUtil(?Utilisateur $idUtil): static
     {
-        $this->Utilisateur = $Utilisateur;
+        $this->idUtil = $idUtil;
 
         return $this;
     }
