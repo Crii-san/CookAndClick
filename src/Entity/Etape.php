@@ -23,7 +23,7 @@ class Etape
     #[ORM\JoinColumn(referencedColumnName: 'idIngredient', nullable: false)]
     private ?Ingredient $idIngredient = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'etapes')]
     #[ORM\JoinColumn(referencedColumnName: 'idRecette', nullable: false)]
     private ?Recette $idRecette = null;
 

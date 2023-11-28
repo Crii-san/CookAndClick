@@ -7,6 +7,7 @@ use App\Repository\AdministrateurRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
+use Faker;
 
 /**
  * @extends ModelFactory<Administrateur>
@@ -46,12 +47,20 @@ final class AdministrateurFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $faker = Faker\Factory::create('fr_FR');
+        $lastname = $faker->lastName();
+        $firstname = $faker->firstName();
+        $lastname = $this->normalizeName($lastname);
+        $firstname = $this->normalizeName($firstname);
+        $domain = self::faker()->domainName();
+        $email = $firstname.'.'.$lastname.'@'.$domain;
+
         return [
-            'email' => self::faker()->text(50),
-            'login' => self::faker()->text(50),
-            'mdp' => self::faker()->text(100),
-            'nom' => self::faker()->text(50),
-            'prenom' => self::faker()->text(50),
+            'email' => $email,
+            'login' => $faker->userName(),
+            'mdp' => $faker->password(15, 100),
+            'nom' => $lastname,
+            'prenom' => $firstname,
         ];
     }
 
