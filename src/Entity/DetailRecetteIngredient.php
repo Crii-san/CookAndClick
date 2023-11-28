@@ -17,11 +17,11 @@ class DetailRecetteIngredient
     private ?int $quantile = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idRecette',nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idRecette', nullable: false)]
     private ?Recette $idRecette = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idIngredient', nullable: false)]
     private ?Ingredient $idIngredient = null;
 
     public function getIdDetail(): ?int
