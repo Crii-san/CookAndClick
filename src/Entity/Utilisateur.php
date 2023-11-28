@@ -40,7 +40,7 @@ class Utilisateur
     private ?Allergene $idAllergene = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idAdmin', nullable: false)]
     private ?Administrateur $idAdmin = null;
 
     public function getIdUtil(): ?int
