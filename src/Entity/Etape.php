@@ -19,6 +19,14 @@ class Etape
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descriptionEtape = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Ingredient $idIngredient = null;
+
+    #[ORM\ManyToOne(inversedBy: 'etapes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Recette $idRecette = null;
+
     public function getIdEtape(): ?int
     {
         return $this->idEtape;
@@ -44,6 +52,30 @@ class Etape
     public function setDescriptionEtape(?string $descriptionEtape): static
     {
         $this->descriptionEtape = $descriptionEtape;
+
+        return $this;
+    }
+
+    public function getIdIngredient(): ?Ingredient
+    {
+        return $this->idIngredient;
+    }
+
+    public function setIdIngredient(?Ingredient $idIngredient): static
+    {
+        $this->idIngredient = $idIngredient;
+
+        return $this;
+    }
+
+    public function getIdRecette(): ?Recette
+    {
+        return $this->idRecette;
+    }
+
+    public function setIdRecette(?Recette $idRecette): static
+    {
+        $this->idRecette = $idRecette;
 
         return $this;
     }
