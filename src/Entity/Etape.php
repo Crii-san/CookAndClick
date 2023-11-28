@@ -21,10 +21,12 @@ class Etape
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idIngredient', nullable: false)]
     private ?Ingredient $idIngredient = null;
 
     #[ORM\ManyToOne(inversedBy: 'etapes')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idRecette', nullable: false)]
     private ?Recette $idRecette = null;
 
     public function getIdEtape(): ?int
