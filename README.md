@@ -29,4 +29,9 @@ _Les commandes_ :
 
 - ``composer start``  -> lance le serveur web de symfony  
 - ``test:cs`` -> lance la vérification du code par PHP CS Fixer  
-- ``fix:cs`` -> lance la correction du code par PHP CS Fixer  
+- ``fix:cs`` -> lance la correction du code par PHP CS Fixer
+
+### Installation .env.local pour l'accés a la Base de Données
+- Il faut copier le .env et le renomer en .env.local.
+- Ensuite il suffit de remplacer la URI par : 
+        ``DATABASE_URL="mysql://[identifient]:[mot de passe]@mysql:3306/[le nom de la bd]?version=10.2.25"``
