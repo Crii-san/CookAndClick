@@ -25,10 +25,10 @@ class Ingredient
     #[ORM\Column(length: 500)]
     private ?string $descriptionIngredient = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Allergene $idAllergene = null;
+
 
     public function getIdIngredient(): ?int
     {
@@ -86,6 +86,30 @@ class Ingredient
     public function setDescriptionIngredient(string $descriptionIngredient): static
     {
         $this->descriptionIngredient = $descriptionIngredient;
+
+        return $this;
+    }
+
+    public function getIdAllergene(): ?int
+    {
+        return $this->idAllergene;
+    }
+
+    public function setIdAllergene(int $idAllergene): static
+    {
+        $this->idAllergene = $idAllergene;
+
+        return $this;
+    }
+
+    public function getNo(): ?string
+    {
+        return $this->no;
+    }
+
+    public function setNo(string $no): static
+    {
+        $this->no = $no;
 
         return $this;
     }
