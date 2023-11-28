@@ -35,6 +35,14 @@ class Utilisateur
     #[ORM\Column(length: 100)]
     private ?string $mdp = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Allergene $idAllergene = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Administrateur $idAdmin = null;
+
     public function getIdUtil(): ?int
     {
         return $this->idUtil;
@@ -127,6 +135,30 @@ class Utilisateur
     public function setMdp(string $mdp): static
     {
         $this->mdp = $mdp;
+
+        return $this;
+    }
+
+    public function getIdAllergene(): ?Allergene
+    {
+        return $this->idAllergene;
+    }
+
+    public function setIdAllergene(?Allergene $idAllergene): static
+    {
+        $this->idAllergene = $idAllergene;
+
+        return $this;
+    }
+
+    public function getIdAdmin(): ?Administrateur
+    {
+        return $this->idAdmin;
+    }
+
+    public function setIdAdmin(?Administrateur $idAdmin): static
+    {
+        $this->idAdmin = $idAdmin;
 
         return $this;
     }
