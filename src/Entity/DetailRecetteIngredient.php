@@ -20,6 +20,10 @@ class DetailRecetteIngredient
     #[ORM\JoinColumn(referencedColumnName: 'idRecette',nullable: false)]
     private ?Recette $idRecette = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Ingredient $idIngredient = null;
+
     public function getIdDetail(): ?int
     {
         return $this->idDetail;
@@ -52,6 +56,18 @@ class DetailRecetteIngredient
     public function setIdRecette(?Recette $idRecette): static
     {
         $this->idRecette = $idRecette;
+
+        return $this;
+    }
+
+    public function getIdIngredient(): ?Ingredient
+    {
+        return $this->idIngredient;
+    }
+
+    public function setIdIngredient(?Ingredient $idIngredient): static
+    {
+        $this->idIngredient = $idIngredient;
 
         return $this;
     }
