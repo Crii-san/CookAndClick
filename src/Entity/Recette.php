@@ -32,12 +32,8 @@ class Recette
     private ?string $duree = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idAdmin', nullable: false)]
-    private ?Administrateur $idAdmin = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idUtil', nullable: false)]
-    private ?Utilisateur $idUtil = null;
+    #[ORM\JoinColumn(referencedColumnName: 'idUser', nullable: false)]
+    private ?User $idUser = null;
 
     public function getIdRecette(): ?int
     {
@@ -116,26 +112,14 @@ class Recette
         return $this;
     }
 
-    public function getIdAdmin(): ?Administrateur
+    public function getIdUser(): ?User
     {
-        return $this->idAdmin;
+        return $this->idUser;
     }
 
-    public function setIdAdmin(?Administrateur $idAdmin): static
+    public function setIdUser(?User $idUser): static
     {
-        $this->idAdmin = $idAdmin;
-
-        return $this;
-    }
-
-    public function getIdUtil(): ?Utilisateur
-    {
-        return $this->idUtil;
-    }
-
-    public function setIdUtil(?Utilisateur $idUtil): static
-    {
-        $this->idUtil = $idUtil;
+        $this->idUser = $idUser;
 
         return $this;
     }
