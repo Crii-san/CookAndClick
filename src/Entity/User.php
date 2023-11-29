@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $tel = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: '$idAllergene', nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'idAllergene', nullable: false)]
     private ?Allergene $idAllergene = null;
 
     public function getIdUser(): ?int
