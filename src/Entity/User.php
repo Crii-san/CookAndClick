@@ -38,10 +38,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeInterface $dateNais = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $login = null;
+    private ?string $pseudo = null;
 
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $tel = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(referencedColumnName: '$idAllergene', nullable: false)]
+    private ?Allergene $idAllergene = null;
 
     public function getIdUser(): ?int
     {
@@ -149,14 +153,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getLogin(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->login;
+        return $this->pseudo;
     }
 
-    public function setLogin(?string $login): static
+    public function setPseudo(?string $pseudo): static
     {
-        $this->login = $login;
+        $this->login = $pseudo;
 
         return $this;
     }
@@ -169,6 +173,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTel(?string $tel): static
     {
         $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getIdAllergene(): ?Allergene
+    {
+        return $this->idAllergene;
+    }
+
+    public function setIdAllergene(?Allergene $idAllergene): static
+    {
+        $this->idAllergene = $idAllergene;
 
         return $this;
     }
