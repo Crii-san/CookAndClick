@@ -30,6 +30,7 @@ _Les commandes_ :
 - ``composer start``  -> lance le serveur web de symfony  
 - ``test:cs`` -> lance la vérification du code par PHP CS Fixer  
 - ``fix:cs`` -> lance la correction du code par PHP CS Fixer
+- ``db`` -> realise toutes le commandes pour re-générer la base de données compléte
 
 ### Installation .env.local pour l'accés a la Base de Données
 - Il faut copier le .env et le renomer en .env.local.
