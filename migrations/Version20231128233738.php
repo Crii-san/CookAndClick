@@ -27,15 +27,15 @@ final class Version20231128233738 extends AbstractMigration
         $this->addSql('CREATE TABLE recette (id_recette INT AUTO_INCREMENT NOT NULL, id_admin_id INT NOT NULL, id_util_id INT NOT NULL, nom_recette VARCHAR(50) DEFAULT NULL, type_recette VARCHAR(50) DEFAULT NULL, niv_difficulte VARCHAR(50) DEFAULT NULL, description_recette VARCHAR(500) DEFAULT NULL, nb_personne INT DEFAULT NULL, duree VARCHAR(10) DEFAULT NULL, INDEX IDX_49BB639034F06E85 (id_admin_id), INDEX IDX_49BB639011C087F0 (id_util_id), PRIMARY KEY(id_recette)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE detail_recette_ingredient (id_detail INT AUTO_INCREMENT NOT NULL, id_recette_id INT NOT NULL, id_ingredient_id INT NOT NULL, quantile INT NOT NULL, INDEX IDX_329D696A2CBBAF3E (id_recette_id), INDEX IDX_329D696A2D1731E9 (id_ingredient_id), PRIMARY KEY(id_detail)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE utilisateur (id_util INT AUTO_INCREMENT NOT NULL, id_allergene_id INT NOT NULL, id_admin_id INT NOT NULL, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, date_nais DATE NOT NULL, email VARCHAR(50) NOT NULL, login VARCHAR(50) NOT NULL, tel VARCHAR(10) NOT NULL, mdp VARCHAR(100) NOT NULL, INDEX IDX_1D1C63B327A51FC0 (id_allergene_id), INDEX IDX_1D1C63B334F06E85 (id_admin_id), PRIMARY KEY(id_util)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE detail_recette_ingredient ADD CONSTRAINT FK_329D696A2CBBAF3E FOREIGN KEY (id_recette_id) REFERENCES recette (idRecette)');
-        $this->addSql('ALTER TABLE detail_recette_ingredient ADD CONSTRAINT FK_329D696A2D1731E9 FOREIGN KEY (id_ingredient_id) REFERENCES ingredient (idIngredient)');
-        $this->addSql('ALTER TABLE etape ADD CONSTRAINT FK_285F75DD2D1731E9 FOREIGN KEY (id_ingredient_id) REFERENCES ingredient (idIngredient)');
-        $this->addSql('ALTER TABLE etape ADD CONSTRAINT FK_285F75DD2CBBAF3E FOREIGN KEY (id_recette_id) REFERENCES recette (idRecette)');
-        $this->addSql('ALTER TABLE ingredient ADD CONSTRAINT FK_6BAF787027A51FC0 FOREIGN KEY (id_allergene_id) REFERENCES allergene (idAllergene)');
-        $this->addSql('ALTER TABLE recette ADD CONSTRAINT FK_49BB639034F06E85 FOREIGN KEY (id_admin_id) REFERENCES administrateur (idAdmin)');
-        $this->addSql('ALTER TABLE recette ADD CONSTRAINT FK_49BB639011C087F0 FOREIGN KEY (id_util_id) REFERENCES utilisateur (idUtil)');
-        $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B327A51FC0 FOREIGN KEY (id_allergene_id) REFERENCES allergene (idAllergene)');
-        $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B334F06E85 FOREIGN KEY (id_admin_id) REFERENCES administrateur (idAdmin)');
+        $this->addSql('ALTER TABLE detail_recette_ingredient ADD CONSTRAINT FK_329D696A2CBBAF3E FOREIGN KEY (id_recette_id) REFERENCES recette (id_recette)');
+        $this->addSql('ALTER TABLE detail_recette_ingredient ADD CONSTRAINT FK_329D696A2D1731E9 FOREIGN KEY (id_ingredient_id) REFERENCES ingredient (id_ingredient)');
+        $this->addSql('ALTER TABLE etape ADD CONSTRAINT FK_285F75DD2D1731E9 FOREIGN KEY (id_ingredient_id) REFERENCES ingredient (id_ingredient)');
+        $this->addSql('ALTER TABLE etape ADD CONSTRAINT FK_285F75DD2CBBAF3E FOREIGN KEY (id_recette_id) REFERENCES recette (id_recette)');
+        $this->addSql('ALTER TABLE ingredient ADD CONSTRAINT FK_6BAF787027A51FC0 FOREIGN KEY (id_allergene_id) REFERENCES allergene (id_allergene)');
+        $this->addSql('ALTER TABLE recette ADD CONSTRAINT FK_49BB639034F06E85 FOREIGN KEY (id_admin_id) REFERENCES administrateur (id_admin)');
+        $this->addSql('ALTER TABLE recette ADD CONSTRAINT FK_49BB639011C087F0 FOREIGN KEY (id_util_id) REFERENCES utilisateur (id_util)');
+        $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B327A51FC0 FOREIGN KEY (id_allergene_id) REFERENCES allergene (id_allergene)');
+        $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B334F06E85 FOREIGN KEY (id_admin_id) REFERENCES administrateur (id_admin)');
     }
 
     public function down(Schema $schema): void
