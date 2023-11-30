@@ -11,19 +11,19 @@ class Recette
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $idRecette = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $nomRecette = null;
+    private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $typeRecette = null;
+    private ?string $type = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    private ?string $descriptionRecette = null;
+    private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $nbPersonne = null;
@@ -31,35 +31,31 @@ class Recette
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $duree = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idUser', nullable: false)]
-    private ?User $idUser = null;
-
     public function getIdRecette(): ?int
     {
-        return $this->idRecette;
+        return $this->id;
     }
 
-    public function getNomRecette(): ?string
+    public function getNom(): ?string
     {
-        return $this->nomRecette;
+        return $this->nom;
     }
 
-    public function setNomRecette(?string $nomRecette): static
+    public function setNomRecette(?string $nom): static
     {
-        $this->nomRecette = $nomRecette;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getTypeRecette(): ?string
+    public function getType(): ?string
     {
-        return $this->typeRecette;
+        return $this->type;
     }
 
-    public function setTypeRecette(?string $typeRecette): static
+    public function setType(?string $type): static
     {
-        $this->typeRecette = $typeRecette;
+        $this->type = $type;
 
         return $this;
     }
@@ -76,14 +72,14 @@ class Recette
         return $this;
     }
 
-    public function getDescriptionRecette(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descriptionRecette;
+        return $this->description;
     }
 
-    public function setDescriptionRecette(?string $descriptionRecette): static
+    public function setDescription(?string $description): static
     {
-        $this->descriptionRecette = $descriptionRecette;
+        $this->description = $description;
 
         return $this;
     }
@@ -108,18 +104,6 @@ class Recette
     public function setDuree(?string $duree): static
     {
         $this->duree = $duree;
-
-        return $this;
-    }
-
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): static
-    {
-        $this->idUser = $idUser;
 
         return $this;
     }
