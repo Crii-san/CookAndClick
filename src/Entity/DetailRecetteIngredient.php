@@ -14,7 +14,7 @@ class DetailRecetteIngredient
     private ?int $idDetail = null;
 
     #[ORM\Column]
-    private ?int $quantile = null;
+    private ?int $quantite = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
@@ -36,14 +36,14 @@ class DetailRecetteIngredient
         return $this;
     }
 
-    public function getQuantile(): ?int
+    public function getQuantite(): ?int
     {
-        return $this->quantile;
+        return $this->quantite;
     }
 
-    public function setQuantile(int $quantile): static
+    public function setQuantite(int $quantite): static
     {
-        $this->quantile = $quantile;
+        $this->quantite = $quantite;
 
         return $this;
     }
