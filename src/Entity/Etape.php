@@ -24,7 +24,7 @@ class Etape
     private ?Ingredient $idIngredient = null;
 
     #[ORM\ManyToOne(inversedBy: 'etapes')]
-    #[ORM\JoinColumn(referencedColumnName: 'idRecette', nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
     private ?Recette $idRecette = null;
 
     public function getIdEtape(): ?int
