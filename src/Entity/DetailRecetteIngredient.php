@@ -17,7 +17,7 @@ class DetailRecetteIngredient
     private ?int $quantile = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idRecette', nullable: false)]
+    #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
     private ?Recette $idRecette = null;
 
     #[ORM\ManyToOne]
