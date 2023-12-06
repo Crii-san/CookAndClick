@@ -11,9 +11,14 @@ class AllergenesFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        foreach (json_decode(file_get_contents('data/Allergene.json', __DIR__), true) as $allergene) {
-            AllergeneFactory::createOne($allergene);
+        $repertoire = __DIR__;
+        $contenuFichier = file_get_contents("{$repertoire}\data\Category.json");
+        $contenuFichierDecode = json_decode($contenuFichier);
 
+        foreach ($contenuFichierDecode as $element) {
+            $name = $element->nom;
+            $description = $element->description;
+            AllergeneFactory::createOne(['nom' => $name, 'description' => $description]);
         }
     }
 }
