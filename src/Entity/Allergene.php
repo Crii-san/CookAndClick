@@ -13,55 +13,55 @@ class Allergene
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $idAllergene = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $nomAllergene = null;
+    private ?string $nom = null;
 
     #[ORM\Column(length: 500)]
-    private ?string $descriptionAllergene = null;
+    private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Ingredient::class, mappedBy: 'idAllergene')]
-    private Collection $idIngredient;
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, mappedBy: 'allergene')]
+    private Collection $ingredients;
 
     public function __construct()
     {
-        $this->idIngredient = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
 
 
-    public function getIdAllergene(): ?int
+    public function getId(): ?int
     {
-        return $this->idAllergene;
+        return $this->id;
     }
 
-    public function setIdAllergene(int $idAllergene): static
+    public function setId(int $id): static
     {
-        $this->idAllergene = $idAllergene;
+        $this->id = $id;
 
         return $this;
     }
 
-    public function getNomAllergene(): ?string
+    public function getNom(): ?string
     {
-        return $this->nomAllergene;
+        return $this->nom;
     }
 
-    public function setNomAllergene(string $nomAllergene): static
+    public function setNom(string $nom): static
     {
-        $this->nomAllergene = $nomAllergene;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getDescriptionAllergene(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descriptionAllergene;
+        return $this->description;
     }
 
-    public function setDescriptionAllergene(string $descriptionAllergene): static
+    public function setDescription(string $description): static
     {
-        $this->descriptionAllergene = $descriptionAllergene;
+        $this->description = $description;
 
         return $this;
     }
@@ -69,25 +69,25 @@ class Allergene
     /**
      * @return Collection<int, Ingredient>
      */
-    public function getIdIngredient(): Collection
+    public function getIngredients(): Collection
     {
-        return $this->idIngredient;
+        return $this->ingredients;
     }
 
-    public function addIdIngredient(Ingredient $idIngredient): static
+    public function addIngredient(Ingredient $ingredient): static
     {
-        if (!$this->idIngredient->contains($idIngredient)) {
-            $this->idIngredient->add($idIngredient);
-            $idIngredient->addIdAllergene($this);
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients->add($ingredient);
+            $ingredient->addAllergene($this);
         }
 
         return $this;
     }
 
-    public function removeIdIngredient(Ingredient $idIngredient): static
+    public function removeIngredients(Ingredient $ingredient): static
     {
-        if ($this->idIngredient->removeElement($idIngredient)) {
-            $idIngredient->removeIdAllergene($this);
+        if ($this->ingredients->removeElement($ingredient)) {
+            $ingredient->removeAllergene($this);
         }
 
         return $this;

@@ -44,8 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $tel = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idAllergene', nullable: false)]
-    private ?Allergene $idAllergene = null;
+    #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
+    private ?Allergene $allergene = null;
 
     public function getIdUser(): ?int
     {
@@ -177,14 +177,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getIdAllergene(): ?Allergene
+    public function getAllergene(): ?Allergene
     {
-        return $this->idAllergene;
+        return $this->allergene;
     }
 
-    public function setIdAllergene(?Allergene $idAllergene): static
+    public function setAllergene(?Allergene $allergene): static
     {
-        $this->idAllergene = $idAllergene;
+        $this->allergene = $allergene;
 
         return $this;
     }

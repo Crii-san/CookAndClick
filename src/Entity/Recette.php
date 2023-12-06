@@ -31,7 +31,7 @@ class Recette
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $duree = null;
 
-    public function getIdRecette(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -41,7 +41,7 @@ class Recette
         return $this->nom;
     }
 
-    public function setNomRecette(?string $nom): static
+    public function setNom(?string $nom): static
     {
         $this->nom = $nom;
 

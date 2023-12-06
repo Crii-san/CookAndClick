@@ -13,64 +13,64 @@ class Etape
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $idEtape = null;
+    private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $numeroEtape = null;
+    private ?int $numero = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    private ?string $descriptionEtape = null;
+    private ?string $description = null;
 
 
     #[ORM\ManyToOne(inversedBy: 'etapes')]
     #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
-    private ?Recette $idRecette = null;
+    private ?Recette $recette = null;
 
-    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'idEtape')]
-    private Collection $idIngredient;
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]
+    private Collection $ingredients;
 
     public function __construct()
     {
-        $this->idIngredient = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
 
-    public function getIdEtape(): ?int
+    public function getId(): ?int
     {
-        return $this->idEtape;
+        return $this->id;
     }
 
-    public function getNumeroEtape(): ?int
+    public function getNumero(): ?int
     {
-        return $this->numeroEtape;
+        return $this->numero;
     }
 
-    public function setNumeroEtape(?int $numeroEtape): static
+    public function setNumero(?int $numero): static
     {
-        $this->numeroEtape = $numeroEtape;
+        $this->numero = $numero;
 
         return $this;
     }
 
-    public function getDescriptionEtape(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descriptionEtape;
+        return $this->description;
     }
 
-    public function setDescriptionEtape(?string $descriptionEtape): static
+    public function setDescription(?string $description): static
     {
-        $this->descriptionEtape = $descriptionEtape;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getIdRecette(): ?Recette
+    public function getRecette(): ?Recette
     {
-        return $this->idRecette;
+        return $this->recette;
     }
 
-    public function setIdRecette(?Recette $idRecette): static
+    public function setRecette(?Recette $recette): static
     {
-        $this->idRecette = $idRecette;
+        $this->recette = $recette;
 
         return $this;
     }
@@ -78,23 +78,23 @@ class Etape
     /**
      * @return Collection<int, Ingredient>
      */
-    public function getIdIngredient(): Collection
+    public function getIngredients(): Collection
     {
-        return $this->idIngredient;
+        return $this->ingredients;
     }
 
-    public function addIdIngredient(Ingredient $idIngredient): static
+    public function addIngredient(Ingredient $ingredient): static
     {
-        if (!$this->idIngredient->contains($idIngredient)) {
-            $this->idIngredient->add($idIngredient);
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients->add($ingredient);
         }
 
         return $this;
     }
 
-    public function removeIdIngredient(Ingredient $idIngredient): static
+    public function removeIngredient(Ingredient $ingredient): static
     {
-        $this->idIngredient->removeElement($idIngredient);
+        $this->ingredients->removeElement($ingredient);
 
         return $this;
     }
