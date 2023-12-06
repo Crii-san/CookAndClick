@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EtapeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EtapeRepository::class)]
@@ -19,13 +21,18 @@ class Etape
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descriptionEtape = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idIngredient', nullable: false)]
-    private ?Ingredient $idIngredient = null;
 
     #[ORM\ManyToOne(inversedBy: 'etapes')]
     #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
     private ?Recette $idRecette = null;
+
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'idEtape')]
+    private Collection $idIngredient;
+
+    public function __construct()
+    {
+        $this->idIngredient = new ArrayCollection();
+    }
 
     public function getIdEtape(): ?int
     {
@@ -56,18 +63,6 @@ class Etape
         return $this;
     }
 
-    public function getIdIngredient(): ?Ingredient
-    {
-        return $this->idIngredient;
-    }
-
-    public function setIdIngredient(?Ingredient $idIngredient): static
-    {
-        $this->idIngredient = $idIngredient;
-
-        return $this;
-    }
-
     public function getIdRecette(): ?Recette
     {
         return $this->idRecette;
@@ -76,6 +71,30 @@ class Etape
     public function setIdRecette(?Recette $idRecette): static
     {
         $this->idRecette = $idRecette;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ingredient>
+     */
+    public function getIdIngredient(): Collection
+    {
+        return $this->idIngredient;
+    }
+
+    public function addIdIngredient(Ingredient $idIngredient): static
+    {
+        if (!$this->idIngredient->contains($idIngredient)) {
+            $this->idIngredient->add($idIngredient);
+        }
+
+        return $this;
+    }
+
+    public function removeIdIngredient(Ingredient $idIngredient): static
+    {
+        $this->idIngredient->removeElement($idIngredient);
 
         return $this;
     }
