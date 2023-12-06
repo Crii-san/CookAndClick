@@ -53,18 +53,6 @@ class Etape
         return $this;
     }
 
-    public function getIdIngredient(): ?Ingredient
-    {
-        return $this->idIngredient;
-    }
-
-    public function setIdIngredient(?Ingredient $idIngredient): static
-    {
-        $this->idIngredient = $idIngredient;
-
-        return $this;
-    }
-
     public function getIdRecette(): ?Recette
     {
         return $this->idRecette;
