@@ -25,10 +25,6 @@ class Ingredient
     #[ORM\Column(length: 500)]
     private ?string $descriptionIngredient = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idAllergene', nullable: false)]
-    private ?Allergene $idAllergene = null;
-
     public function getIdIngredient(): ?int
     {
         return $this->idIngredient;
@@ -85,18 +81,6 @@ class Ingredient
     public function setDescriptionIngredient(string $descriptionIngredient): static
     {
         $this->descriptionIngredient = $descriptionIngredient;
-
-        return $this;
-    }
-
-    public function getIdAllergene(): ?int
-    {
-        return $this->idAllergene;
-    }
-
-    public function setIdAllergene(int $idAllergene): static
-    {
-        $this->idAllergene = $idAllergene;
 
         return $this;
     }
