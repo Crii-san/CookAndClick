@@ -1,0 +1,58 @@
+﻿[
+  {
+    "nom": "Gluten",
+	"description": "Gluten (blé, seigle, orge, avoine, épeautre, kamut ou leurs souches hybridées) et produits à base de ces céréales."
+  },
+  {
+    "nom": "Sésame",
+	"description": "Graines de sésame et  produits à base de graines de sésame"
+  },
+  {
+    "nom": "Crustacés",
+	"description": "Crustacés et produits à base de crustacés"
+  },
+  {
+    "nom": "Oeuf",
+	"description": "Oeuf et produits à base d'oeufs"
+  },
+  {
+    "nom": "Poisson",
+	"description": "Poisson et produits à base de poissons"
+  },
+  {
+    "nom": "Moutarde",
+	"description": "Moutarde et produits à base de moutarde"
+  },
+  {
+    "nom": "Lait",
+	"description": "Lait et produits à base de lait (y compris de lactose)"
+  },
+  {
+    "nom": "Céleri",
+	"description": "Céleri et produits à base de céleri" 
+  },
+  {
+    "nom": "Arachide",
+	"description": "Arachide et produits à base d’arachide"
+  },
+  {
+    "nomAllergene": "Soja",
+	"description": "Soja etproduits à base de soja"
+  },
+  {
+    "nom": "Mollusques",
+	"description": "Mollusques et produits à base de mollusques"
+  },
+  {
+    "nom": "Lupin",
+	"description": "Lupin et produits à base de lupin"
+  },
+  {
+    "nom": "Sulfites",
+	"description": "Anhydride sulfureux et sulfites en concentration de plus de 10mg/kg ou 10 mg/l (exprimés en SO2)." 
+  },
+  {
+    "nom": "Fruit à coque",
+	"description": "Fruit à coque et (amandes, noisettes, noix, noix de : cajou, pécan, macadamia, du Brésil, du Queensland, pistaches) et produits à base de ces fruits."
+  }
+]
