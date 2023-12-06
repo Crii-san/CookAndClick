@@ -19,9 +19,6 @@ class Etape
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descriptionEtape = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(referencedColumnName: 'idIngredient', nullable: false)]
-    private ?Ingredient $idIngredient = null;
 
     #[ORM\ManyToOne(inversedBy: 'etapes')]
     #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
