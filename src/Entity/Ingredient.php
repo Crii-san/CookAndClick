@@ -13,10 +13,10 @@ class Ingredient
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $idIngredient = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $nomIngredient = null;
+    private ?string $nom = null;
 
     #[ORM\Column]
     private ?int $calories = null;
@@ -25,40 +25,40 @@ class Ingredient
     private ?string $uniteMesure = null;
 
     #[ORM\Column(length: 500)]
-    private ?string $descriptionIngredient = null;
+    private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Allergene::class, inversedBy: 'idIngredient')]
-    private Collection $idAllergene;
+    #[ORM\ManyToMany(targetEntity: Allergene::class, inversedBy: 'ingredient')]
+    private Collection $allergenes;
 
-    #[ORM\ManyToMany(targetEntity: Etape::class, mappedBy: 'idIngredient')]
-    private Collection $idEtape;
+    #[ORM\ManyToMany(targetEntity: Etape::class, mappedBy: 'ingredient')]
+    private Collection $etapes;
 
     public function __construct()
     {
-        $this->idAllergene = new ArrayCollection();
-        $this->idEtape = new ArrayCollection();
+        $this->allergenes = new ArrayCollection();
+        $this->etapes = new ArrayCollection();
     }
 
-    public function getIdIngredient(): ?int
+    public function getId(): ?int
     {
-        return $this->idIngredient;
+        return $this->id;
     }
 
-    public function setIdIngredient(int $idIngredient): static
+    public function setId(int $id): static
     {
-        $this->idIngredient = $idIngredient;
+        $this->id = $id;
 
         return $this;
     }
 
-    public function getNomIngredient(): ?string
+    public function getNom(): ?string
     {
-        return $this->nomIngredient;
+        return $this->nom;
     }
 
-    public function setNomIngredient(string $nomIngredient): static
+    public function setNom(string $nom): static
     {
-        $this->nomIngredient = $nomIngredient;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -87,14 +87,14 @@ class Ingredient
         return $this;
     }
 
-    public function getDescriptionIngredient(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descriptionIngredient;
+        return $this->description;
     }
 
-    public function setDescriptionIngredient(string $descriptionIngredient): static
+    public function setDescription(string $description): static
     {
-        $this->descriptionIngredient = $descriptionIngredient;
+        $this->description = $description;
 
         return $this;
     }
@@ -114,23 +114,23 @@ class Ingredient
     /**
      * @return Collection<int, Allergene>
      */
-    public function getIdAllergene(): Collection
+    public function getAllergenes(): Collection
     {
-        return $this->idAllergene;
+        return $this->allergenes;
     }
 
-    public function addIdAllergene(Allergene $idAllergene): static
+    public function addAllergene(Allergene $allergene): static
     {
-        if (!$this->idAllergene->contains($idAllergene)) {
-            $this->idAllergene->add($idAllergene);
+        if (!$this->allergenes->contains($allergene)) {
+            $this->allergenes->add($allergene);
         }
 
         return $this;
     }
 
-    public function removeIdAllergene(Allergene $idAllergene): static
+    public function removeAllergene(Allergene $allergene): static
     {
-        $this->idAllergene->removeElement($idAllergene);
+        $this->allergenes->removeElement($allergene);
 
         return $this;
     }
@@ -138,25 +138,25 @@ class Ingredient
     /**
      * @return Collection<int, Etape>
      */
-    public function getIdEtape(): Collection
+    public function getEtapes(): Collection
     {
-        return $this->idEtape;
+        return $this->etapes;
     }
 
-    public function addIdEtape(Etape $idEtape): static
+    public function addEtape(Etape $etape): static
     {
-        if (!$this->idEtape->contains($idEtape)) {
-            $this->idEtape->add($idEtape);
-            $idEtape->addIdIngredient($this);
+        if (!$this->etapes->contains($etape)) {
+            $this->etapes->add($etape);
+            $etape->addIngredient($this);
         }
 
         return $this;
     }
 
-    public function removeIdEtape(Etape $idEtape): static
+    public function removeEtape(Etape $etape): static
     {
-        if ($this->idEtape->removeElement($idEtape)) {
-            $idEtape->removeIdIngredient($this);
+        if ($this->etapes->removeElement($etape)) {
+            $etape->removeIngredient($this);
         }
 
         return $this;

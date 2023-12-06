@@ -49,8 +49,8 @@ final class AllergeneFactory extends ModelFactory
         $nomAllergene = mb_convert_case(self::faker()->word(), MB_CASE_TITLE, 'UTF-8');
         $descAllergene = self::faker()->text(500);
         return [
-            'descriptionAllergene' => $descAllergene,
-            'nomAllergene' => $nomAllergene,
+            'description' => $descAllergene,
+            'nom' => $nomAllergene,
         ];
     }
 
