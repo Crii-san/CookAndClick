@@ -62,6 +62,7 @@ final class UserFactory extends ModelFactory
             'password' => 'test',
             'prenom' => $prenom,
             'roles' => [],
+            'dateNais' => $faker->dateTime(),
         ];
     }
 
