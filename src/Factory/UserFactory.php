@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Faker;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -46,12 +47,20 @@ final class UserFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $faker = Faker\Factory::create('fr_FR');
+        $nom = $faker->lastName();
+        $prenom = $faker->firstName();
+        $lastname = $this->normalizeName($nom);
+        $firstname = $this->normalizeName($prenom);
+        $domain = self::faker()->domainName();
+        $email = $firstname.'.'.$lastname.'@'.$domain;
+
         return [
-            'allergene' => AllergeneFactory::new(),
-            'email' => self::faker()->text(180),
-            'nom' => self::faker()->text(50),
-            'password' => self::faker()->text(),
-            'prenom' => self::faker()->text(50),
+            'allergene' => AllergeneFactory::random(),
+            'email' => $email,
+            'nom' => $nom,
+            'password' => 'test',
+            'prenom' => $prenom,
             'roles' => [],
         ];
     }
@@ -79,5 +88,4 @@ final class UserFactory extends ModelFactory
 
         return $this->transliterator->transliterate($name);
     }
-
 }
