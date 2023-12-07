@@ -35,7 +35,7 @@ final class UserFactory extends ModelFactory
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
-
+        $this->transliterator = \Transliterator::create('Any-Latin; Latin-ASCII');
         $this->passwordHasher = $passwordHasher;
     }
 
@@ -72,4 +72,5 @@ final class UserFactory extends ModelFactory
     {
         return User::class;
     }
+
 }
