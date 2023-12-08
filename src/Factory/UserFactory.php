@@ -32,6 +32,7 @@ use Zenstruck\Foundry\RepositoryProxy;
 final class UserFactory extends ModelFactory
 {
     private $passwordHasher;
+    private ?\Transliterator $transliterator;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
