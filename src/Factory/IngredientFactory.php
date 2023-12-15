@@ -7,6 +7,7 @@ use App\Repository\IngredientRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
+use Faker;
 
 /**
  * @extends ModelFactory<Ingredient>
@@ -46,11 +47,16 @@ final class IngredientFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+
+        $calories = self::faker()->randomNumber();
+        $description = self::faker()->text(500);
+        $nom = mb_convert_case(self::faker()->word(), MB_CASE_TITLE, 'UTF-8');
+        $uniteMesure = mb_convert_case(self::faker()->word(), MB_CASE_TITLE, 'UTF-8');
         return [
-            'calories' => self::faker()->randomNumber(),
-            'description' => self::faker()->text(500),
-            'nom' => self::faker()->text(50),
-            'uniteMesure' => self::faker()->text(50),
+            'calories' => $calories,
+            'description' => $description,
+            'nom' => $nom,
+            'uniteMesure' => $uniteMesure,
         ];
     }
 
