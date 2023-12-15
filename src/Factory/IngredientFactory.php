@@ -47,11 +47,11 @@ final class IngredientFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-
+        $faker = Faker\Factory::create('fr_FR');
         $calories = self::faker()->randomNumber();
-        $description = self::faker()->text(500);
-        $nom = mb_convert_case(self::faker()->word(), MB_CASE_TITLE, 'UTF-8');
-        $uniteMesure = mb_convert_case(self::faker()->word(), MB_CASE_TITLE, 'UTF-8');
+        $description = $faker->text(500);
+        $nom = mb_convert_case($faker->word(), MB_CASE_TITLE, 'UTF-8');
+        $uniteMesure = mb_convert_case($faker->word(), MB_CASE_TITLE, 'UTF-8');
         return [
             'calories' => $calories,
             'description' => $description,
