@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\IngredientFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 ;
@@ -10,9 +11,6 @@ class IngredientFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+        IngredientFactory::createMany(150);
     }
 }
