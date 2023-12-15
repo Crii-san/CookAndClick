@@ -14,7 +14,10 @@
     <ul>
         {% for allergene in Allergenes %}
             <li>
-               <span class="allergene">{{ allergene.nom }}</span>, <span class="description">{{ allergene.description}}</span>
+               <span class="allergene">{{ allergene.nom }}</span>
+                <ul>
+                    <span class="description"> - {{ allergene.description}}</span>
+                </ul>
             </li>
         {% endfor %}
     </ul>
