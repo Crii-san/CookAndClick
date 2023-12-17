@@ -13,11 +13,21 @@
             background-image: url("{{ asset( 'img/en-tete.png') }}");
             background-size: cover; }
 
-        .menu{ display: flex;
+        .menu { display: flex;
+            flex-direction: column;
+            padding: 10px;
+            background-color: #BAA898 ;}
+
+        .slogan{display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;  }
+
+        .menu1 {
+            display: flex;
             align-items: center;
             justify-content:space-evenly;
-            padding: 10px;
-            background-color: #BAA898}
+        }
 
         .logo { font-family: 'White Star free', sans-serif; font-size: 35px}
 
@@ -31,7 +41,13 @@
     </header >
 
     <div class="menu">
+        <div class="slogan">
+            <p class="logo">Cliquez.Preparez.Mangez!</p>
+        </div>
+
+        <div class="menu1">
         <!-- <a href="">Catégorie</a> -->  <a href="{{ path('app_recette') }}">Recettes</a> |  <a href="{{ path('app_allergene') }}">Allèrgenes</a> | <a href="{{ path('app_ingredient') }}">Ingrédients</a>
+        </div>
     </div>
 
     <div>
