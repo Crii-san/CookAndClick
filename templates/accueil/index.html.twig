@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Cook&Click{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/white-star-free');
+        @import url('https://fonts.cdnfonts.com/css/garet');
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        .en-tete{ display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-image: url("{{ asset( 'img/en-tete.png') }}");
+            background-size: cover; }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Elève/Documents/1- IUT/S3 Gestion SI/sae3-01/src/Controller/AccueilController.php'|file_link(0) }}">src/Controller/AccueilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Elève/Documents/1- IUT/S3 Gestion SI/sae3-01/templates/accueil/index.html.twig'|file_link(0) }}">templates/accueil/index.html.twig</a></code></li>
-    </ul>
-</div>
+        .menu{ display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            padding: 10px;
+            background-color: #BAA898}
+
+        .logo { font-family: 'White Star free', sans-serif; font-size: 35px}
+
+        .logo2 { font-family: 'Garet', sans-serif; text-transform: uppercase; font-size: 10px}
+
+    </style>
+
+    <header  class="en-tete">
+        <h1 class="logo">Cook&Click</h1>
+        <h1 class="logo2">Cook&Click</h1>
+    </header >
+
+    <div class="menu">
+        <!-- <a href="">Catégorie</a> -->  <a href="{{ path('app_recette') }}">Recettes</a> |  <a href="{{ path('app_allergene') }}">Allèrgenes</a> | <a href="{{ path('app_ingredient') }}">Ingrédients</a>
+    </div>
+
+    <div>
+        <h4>Les nouvelles recettes</h4>
+    </div>
 {% endblock %}
