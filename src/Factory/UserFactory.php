@@ -51,10 +51,10 @@ final class UserFactory extends ModelFactory
         $faker = Faker\Factory::create('fr_FR');
         $nom = $faker->lastName();
         $prenom = $faker->firstName();
-        $lastname = $this->normalizeName($nom);
-        $firstname = $this->normalizeName($prenom);
-        $domain = self::faker()->domainName();
-        $email = $firstname.'.'.$lastname.'@'.$domain;
+        $nom = $this->normalizeName($nom);
+        $prenom = $this->normalizeName($prenom);
+        $variable = $faker->numerify();
+        $email = "user-$variable@example.com";
 
         return [
             'allergene' => AllergeneFactory::random(),
