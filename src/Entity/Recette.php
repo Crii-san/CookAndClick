@@ -17,9 +17,6 @@ class Recette
     private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $type = null;
-
-    #[ORM\Column(length: 50, nullable: true)]
     private ?string $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
@@ -34,6 +31,10 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $heures = null;
 
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,18 +48,6 @@ class Recette
     public function setNom(?string $nom): static
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -119,6 +108,18 @@ class Recette
     public function setHeures(?int $heures): static
     {
         $this->heures = $heures;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
