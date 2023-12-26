@@ -28,8 +28,11 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $nbPersonne = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $duree = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $minutes = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $heures = null;
 
     public function getId(): ?int
     {
@@ -96,14 +99,26 @@ class Recette
         return $this;
     }
 
-    public function getDuree(): ?string
+    public function getMinutes(): ?int
     {
-        return $this->duree;
+        return $this->minutes;
     }
 
-    public function setDuree(?string $duree): static
+    public function setMinutes(?int $minutes): static
     {
-        $this->duree = $duree;
+        $this->minutes = $minutes;
+
+        return $this;
+    }
+
+    public function getHeures(): ?int
+    {
+        return $this->heures;
+    }
+
+    public function setHeures(?int $heures): static
+    {
+        $this->heures = $heures;
 
         return $this;
     }
