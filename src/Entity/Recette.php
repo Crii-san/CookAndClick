@@ -17,9 +17,6 @@ class Recette
     private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $type = null;
-
-    #[ORM\Column(length: 50, nullable: true)]
     private ?string $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
@@ -28,8 +25,15 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $nbPersonne = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $duree = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $minutes = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $heures = null;
+
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
 
     public function getId(): ?int
     {
@@ -44,18 +48,6 @@ class Recette
     public function setNom(?string $nom): static
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -96,14 +88,38 @@ class Recette
         return $this;
     }
 
-    public function getDuree(): ?string
+    public function getMinutes(): ?int
     {
-        return $this->duree;
+        return $this->minutes;
     }
 
-    public function setDuree(?string $duree): static
+    public function setMinutes(?int $minutes): static
     {
-        $this->duree = $duree;
+        $this->minutes = $minutes;
+
+        return $this;
+    }
+
+    public function getHeures(): ?int
+    {
+        return $this->heures;
+    }
+
+    public function setHeures(?int $heures): static
+    {
+        $this->heures = $heures;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
