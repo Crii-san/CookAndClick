@@ -3,53 +3,6 @@
 {% block title %}Cook&Click{% endblock %}
 
 {% block body %}
-    <style>
-        @import url('https://fonts.cdnfonts.com/css/white-star-free');
-        @import url('https://fonts.cdnfonts.com/css/garet');
-
-        .en-tete{ display: flex;
-            align-items: center;
-            flex-direction: column;
-            background-image: url("{{ asset( 'img/en-tete.png') }}");
-            background-size: cover; }
-
-        .menu { display: flex;
-            flex-direction: column;
-            padding: 10px;
-            background-color: #BAA898 ;}
-
-        .slogan{display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;  }
-
-        .menu1 {
-            display: flex;
-            align-items: center;
-            justify-content:space-evenly;
-        }
-
-        .logo { font-family: 'White Star free', sans-serif; font-size: 35px}
-
-        .logo2 { font-family: 'Garet', sans-serif; text-transform: uppercase; font-size: 10px}
-
-    </style>
-
-    <header  class="en-tete">
-        <h1 class="logo">Cook&Click</h1>
-        <h1 class="logo2">Cook&Click</h1>
-    </header >
-
-    <div class="menu">
-        <div class="slogan">
-            <p class="logo">Cliquez.Preparez.Mangez!</p>
-        </div>
-
-        <div class="menu1">
-        <!-- <a href="">Catégorie</a> -->  <a href="{{ path('app_recette') }}">Recettes</a> |  <a href="{{ path('app_allergene') }}">Allèrgenes</a> | <a href="{{ path('app_ingredient') }}">Ingrédients</a>
-        </div>
-    </div>
-
     <div>
         <h4>Les nouvelles recettes</h4>
     </div>
