@@ -46,8 +46,20 @@ final class RecetteFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $nom = mb_convert_case(self::faker()->sentence(3), MB_CASE_TITLE, 'UTF-8');
+        $niv_difficulte = self::faker()->numberBetween(1, 5);
+        $description = self::faker()->text(250);
+        $nb_personne = self::faker()->numberBetween(1, 10);
+        $minutes = self::faker()->numberBetween(0, 59);
+        $heures = self::faker()->numberBetween(0, 4);
+
         return [
-            'categorie' => null, // TODO add App\Entity\Categorie type manually
+            'nom' => $nom,
+            'niv_difficulte' => $niv_difficulte,
+            'description' => $description,
+            'nb_personne' => $nb_personne,
+            'minutes' => $minutes,
+            'heures' => $heures,
         ];
     }
 
