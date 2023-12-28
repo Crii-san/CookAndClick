@@ -21,6 +21,25 @@ class RecetteRepository extends ServiceEntityRepository
         parent::__construct($registry, Recette::class);
     }
 
+    /**
+     * @return Recette[] Returns an array of Contact objects
+     */
+    public function search(string $text = ''): array
+    {
+        $qb = $this->createQueryBuilder('recette');
+        $qb->select('recette')
+            ->addSelect('categorie')
+            ->leftJoin('recette.categorie', 'categorie')
+            ->where($qb->expr()->orX(
+                $qb->expr()->like('recette.nom', ':text'),
+            ))
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('recette.nom', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 //    /**
 //     * @return Recette[] Returns an array of Recette objects
 //     */
