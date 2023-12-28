@@ -62,4 +62,16 @@ class RecetteRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+    public function findDessert(): array
+    {
+        $qb = $this->createQueryBuilder('recette');
+        $qb->select('recette')
+            ->addSelect('categorie')
+            ->join('recette.categorie', 'categorie')
+            ->where('categorie = 3');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
 }
