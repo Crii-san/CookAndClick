@@ -6,5 +6,10 @@
 
     <h1>Liste des Recettes</h1>
 
+    <ul>
+        {% for recette in recettes %}
+            <li><span class="recette">{{ recette.nom }}</span></li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
