@@ -28,4 +28,14 @@ class RecetteController extends AbstractController
             'recettes' => $recettes,
         ]);
     }
+
+    #[Route('/recette/plat', name: 'app_entree')]
+    public function plat(RecetteRepository $recetteRepository): Response
+    {
+        $recettes = $recetteRepository->triCategorie(2);
+
+        return $this->render('recette/entree.html.twig', [
+            'recettes' => $recettes,
+        ]);
+    }
 }
