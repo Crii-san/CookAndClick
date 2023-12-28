@@ -21,54 +21,14 @@ class RecetteRepository extends ServiceEntityRepository
         parent::__construct($registry, Recette::class);
     }
 
-//    /**
-//     * @return Recette[] Returns an array of Recette objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-    public function findEntree(): array
+    public function triCategorie(int $id): array
     {
         $qb = $this->createQueryBuilder('recette');
         $qb->select('recette')
             ->addSelect('categorie')
             ->join('recette.categorie', 'categorie')
-            ->where('categorie = 1');
-
-        $query = $qb->getQuery();
-
-        return $query->execute();
-    }
-
-    public function findPlat(): array
-    {
-        $qb = $this->createQueryBuilder('recette');
-        $qb->select('recette')
-            ->addSelect('categorie')
-            ->join('recette.categorie', 'categorie')
-            ->where('categorie = 2');
-
-        $query = $qb->getQuery();
-
-        return $query->execute();
-    }
-
-    public function findDessert(): array
-    {
-        $qb = $this->createQueryBuilder('recette');
-        $qb->select('recette')
-            ->addSelect('categorie')
-            ->join('recette.categorie', 'categorie')
-            ->where('categorie = 3');
+            ->where('categorie = :contactId')
+            ->setParameter('contactId', "{$id}");
 
         $query = $qb->getQuery();
 
