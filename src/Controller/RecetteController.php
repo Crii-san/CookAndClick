@@ -18,4 +18,14 @@ class RecetteController extends AbstractController
             'recettes' => $recettes,
         ]);
     }
+
+    #[Route('/recette/entree', name: 'app_entree')]
+    public function entree(RecetteRepository $recetteRepository): Response
+    {
+        $recettes = $recetteRepository->findEntree();
+
+        return $this->render('recette/entree.html.twig', [
+            'recettes' => $recettes,
+        ]);
+    }
 }
