@@ -11,6 +11,6 @@ class IngredientFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        IngredientFactory::createMany(150);
+        IngredientFactory::createMany(100);
     }
 }
