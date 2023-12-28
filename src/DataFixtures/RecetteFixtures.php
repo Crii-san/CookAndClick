@@ -11,7 +11,7 @@ class RecetteFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        RecetteFactory::createMany(100, function () {
+        RecetteFactory::createMany(20, function () {
             return [
                 'categorie' => CategorieFactory::random(),
             ];
