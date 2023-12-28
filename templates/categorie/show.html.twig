@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Toutes les entrées{% endblock %}
+{% block title %}Tous les {{ categorie }}s{% endblock %}
 
 {% block body %}
 
-    <h1>Toutes les entrées</h1>
+    <h1>Tous les { categorie }}s</h1>
 
     <ul>
         {% for recette in recettes %}
