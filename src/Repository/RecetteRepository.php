@@ -48,4 +48,18 @@ class RecetteRepository extends ServiceEntityRepository
 
         return $query->execute();
     }
+
+    public function findPlat(): array
+    {
+        $qb = $this->createQueryBuilder('recette');
+        $qb->select('recette')
+            ->addSelect('categorie')
+            ->join('recette.categorie', 'categorie')
+            ->where('categorie = 2');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 }
