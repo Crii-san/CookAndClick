@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+    <h1>Les catégories</h1>
+
+    <ul>
+        {% for categorie in categories %}
+            <li>
+                <a href="/categorie/{{ categorie.id }}">
+                <span class="recette">{{ categorie.nom }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

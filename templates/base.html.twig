@@ -19,8 +19,9 @@
 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ path('app_recette')}}">Recettes</a>
+            <a class="navbar-brand" href="{{ path('app_recette')}}">Toutes les recettes</a>
             <a class="navbar-brand" href="{{ path('app_allergene')}}">Allergènes</a>
+            <a class="navbar-brand" href="{{ path('app_categorie')}}">Recettes par catégorie</a>
             <form class="d-flex" role="search" lang="fr" action="{{ path('app_recette')}}">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>

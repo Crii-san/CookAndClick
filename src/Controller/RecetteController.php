@@ -18,34 +18,4 @@ class RecetteController extends AbstractController
             'recettes' => $recettes,
         ]);
     }
-
-    #[Route('/recette/entree', name: 'app_entree')]
-    public function entree(RecetteRepository $recetteRepository): Response
-    {
-        $recettes = $recetteRepository->triCategorie(1);
-
-        return $this->render('recette/entree.html.twig', [
-            'recettes' => $recettes,
-        ]);
-    }
-
-    #[Route('/recette/plat', name: 'app_plat')]
-    public function plat(RecetteRepository $recetteRepository): Response
-    {
-        $recettes = $recetteRepository->triCategorie(2);
-
-        return $this->render('recette/plat.html.twig', [
-            'recettes' => $recettes,
-        ]);
-    }
-
-    #[Route('/recette/dessert', name: 'app_dessert')]
-    public function dessert(RecetteRepository $recetteRepository): Response
-    {
-        $recettes = $recetteRepository->triCategorie(2);
-
-        return $this->render('recette/dessert.html.twig', [
-            'recettes' => $recettes,
-        ]);
-    }
 }
