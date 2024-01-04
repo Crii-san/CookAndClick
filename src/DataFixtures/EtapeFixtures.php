@@ -21,7 +21,7 @@ class EtapeFixtures extends Fixture
     public function getDependencies(): array
     {
         return [
-            RecetteFactory::class,
+            RecetteFixtures::class,
         ];
     }
 }
