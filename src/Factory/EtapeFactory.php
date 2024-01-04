@@ -46,8 +46,12 @@ final class EtapeFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $numero = self::faker()->numberBetween(1, 30);
+        $description = self::faker()->text(250);
+
         return [
-            'recette' => RecetteFactory::new(),
+            'numero' => $numero,
+            'description' => $description,
         ];
     }
 
