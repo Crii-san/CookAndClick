@@ -21,16 +21,39 @@ class RecetteRepository extends ServiceEntityRepository
         parent::__construct($registry, Recette::class);
     }
 
-    public function triCategorie(int $id): array
+    /**
+     * @return Recette[] Returns an array of Contact objects
+     */
+    public function search(string $text = ''): array
     {
         $qb = $this->createQueryBuilder('recette');
         $qb->select('recette')
             ->addSelect('categorie')
-            ->join('recette.categorie', 'categorie')
-            ->where('categorie = :contactId')
-            ->setParameter('contactId', "{$id}");
+            ->leftJoin('recette.categorie', 'categorie')
+            ->where($qb->expr()->orX(
+                $qb->expr()->like('recette.nom', ':text'),
+            ))
+            ->setParameter('text', '%'.$text.'%')
+            ->orderBy('recette.nom', 'ASC');
 
         $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+//    /**
+//     * @return Recette[] Returns an array of Recette objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('r')
+//            ->andWhere('r.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('r.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
 
         return $query->execute();
     }
