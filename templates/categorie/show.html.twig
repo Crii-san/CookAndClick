@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categorie.nom }}s{% endblock %}
+
+{% block body %}
+
+    <h1>{{ categorie.nom }}s</h1>
+
+    <ul>
+        {% for recette in recettes %}
+            <li><span class="recette">{{ recette.nom }}</span></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
