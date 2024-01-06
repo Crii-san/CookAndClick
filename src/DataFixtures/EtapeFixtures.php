@@ -5,13 +5,14 @@ namespace App\DataFixtures;
 use App\Factory\EtapeFactory;
 use App\Factory\RecetteFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class EtapeFixtures extends Fixture
+class EtapeFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        EtapeFactory::createMany(50, function () {
+        EtapeFactory::createMany(200, function () {
             return [
                 'recette' => RecetteFactory::random(),
             ];
