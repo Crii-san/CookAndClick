@@ -5,10 +5,11 @@ namespace App\DataFixtures;
 use App\Factory\AllergeneFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -37,5 +38,12 @@ class UserFixtures extends Fixture
         });
 
         $manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            AllergenesFixtures::class,
+        ];
     }
 }
