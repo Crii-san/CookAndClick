@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Factory\CategorieFactory;
 use App\Factory\RecetteFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class RecetteFixtures extends Fixture
+class RecetteFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -21,7 +22,7 @@ class RecetteFixtures extends Fixture
     public function getDependencies(): array
     {
         return [
-            CategorieFactory::class,
+            CategorieFixtures::class,
         ];
     }
 }
