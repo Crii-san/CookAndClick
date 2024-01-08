@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ recette.nom }} description{% endblock %}
+
+{% block body %}
+
+    <h1>{{ recette.nom }}</h1>
+
+    <div class="description_recette">
+        <h4>Description :</h4>
+        <dl>
+            <dt>Temps de préparation</dt>
+            <dd>{{ recette.heures }}:{{ recette.minutes }} minutes</dd>
+            <dt>Nombre de personnes</dt>
+            <dd>{{ recette.nbPersonne }}</dd>
+        </dl>
+    </div>
+
+    <div class="desc_ingrédients">
+        <h4>Ingrédients :</h4>
+
+    </div>
+{#
+    <div class="desc_étapes">
+        <h4>Étapes :</h4>
+        <ol>
+            {% for etape in etapes %}
+                <li>{{ etape.description }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+#}
+
+{% endblock %}
+
