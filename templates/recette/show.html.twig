@@ -4,11 +4,13 @@
 
 {% block body %}
 
-    <h1>{{ recette.nom }}</h1>
+    <h2>{{ recette.nom }}</h2>
 
     <div class="description_recette">
         <h4>Description :</h4>
         <dl>
+            <dt>Catégorie</dt>
+            <dd>{{ recette.categorie.nom }}</dd>
             <dt>Temps de préparation</dt>
             <dd>{{ recette.heures }}:{{ recette.minutes }} minutes</dd>
             <dt>Nombre de personnes</dt>
@@ -18,18 +20,24 @@
 
     <div class="desc_ingrédients">
         <h4>Ingrédients :</h4>
-
+        <ul>
+            {% for etape in recette.etapes %}
+                {% for ingredient in etape.ingredients %}
+                    <li>{{ ingredient.nom }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
     </div>
-{#
+
     <div class="desc_étapes">
         <h4>Étapes :</h4>
         <ol>
-            {% for etape in etapes %}
+            {% for etape in recette.etapes %}
                 <li>{{ etape.description }}</li>
             {% endfor %}
         </ol>
     </div>
-#}
+
 
 {% endblock %}
 
