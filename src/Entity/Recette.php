@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecetteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecetteRepository::class)]
@@ -34,6 +36,14 @@ class Recette
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
+
+    #[ORM\OneToMany(mappedBy: 'recette', targetEntity: Etape::class)]
+    private Collection $etapes;
+
+    public function __construct()
+    {
+        $this->etapes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +130,36 @@ class Recette
     public function setCategorie(?Categorie $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Etape>
+     */
+    public function getEtapes(): Collection
+    {
+        return $this->etapes;
+    }
+
+    public function addEtape(Etape $etape): static
+    {
+        if (!$this->etapes->contains($etape)) {
+            $this->etapes->add($etape);
+            $etape->setRecette($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtape(Etape $etape): static
+    {
+        if ($this->etapes->removeElement($etape)) {
+            // set the owning side to null (unless already changed)
+            if ($etape->getRecette() === $this) {
+                $etape->setRecette(null);
+            }
+        }
 
         return $this;
     }
