@@ -37,4 +37,9 @@ class RecetteController extends AbstractController
             'recette' => $recette,
         ]);
     }
+
+    #[Route('/recette/create', name: 'app_recette_create')]
+    public function create()
+    {
+    }
 }
