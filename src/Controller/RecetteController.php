@@ -33,5 +33,8 @@ class RecetteController extends AbstractController
     #[Route('/recette/delete/{id<\d+>}', name: 'app_recette_delete')]
     public function delete(Recette $recette)
     {
+        return $this->render('recette/delete.html.twig', parameters: [
+            'recette' => $recette,
+        ]);
     }
 }
