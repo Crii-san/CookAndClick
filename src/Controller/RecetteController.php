@@ -20,4 +20,12 @@ class RecetteController extends AbstractController
             'recettes' => $recettes, 'search' => $searchText,
         ]);
     }
+    #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
+    public function update(Recette $contact)
+    {
+
+    }
+
+
+
 }
