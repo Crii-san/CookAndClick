@@ -20,7 +20,7 @@ class Recette
     private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $nivDifficulte = null;
+    private ?int $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $description = null;
@@ -63,12 +63,12 @@ class Recette
         return $this;
     }
 
-    public function getNivDifficulte(): ?string
+    public function getNivDifficulte(): ?int
     {
         return $this->nivDifficulte;
     }
 
-    public function setNivDifficulte(?string $nivDifficulte): static
+    public function setNivDifficulte(?int $nivDifficulte): static
     {
         $this->nivDifficulte = $nivDifficulte;
 
