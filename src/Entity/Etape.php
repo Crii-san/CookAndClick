@@ -21,13 +21,12 @@ class Etape
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $description = null;
 
-
-    #[ORM\ManyToOne(inversedBy: 'etapes')]
-    #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
-    private ?Recette $recette = null;
-
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]
     private Collection $ingredients;
+
+    #[ORM\ManyToOne(inversedBy: 'etapes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Recette $recette = null;
 
     public function __construct()
     {
@@ -63,18 +62,6 @@ class Etape
         return $this;
     }
 
-    public function getRecette(): ?Recette
-    {
-        return $this->recette;
-    }
-
-    public function setRecette(?Recette $recette): static
-    {
-        $this->recette = $recette;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Ingredient>
      */
@@ -95,6 +82,18 @@ class Etape
     public function removeIngredient(Ingredient $ingredient): static
     {
         $this->ingredients->removeElement($ingredient);
+
+        return $this;
+    }
+
+    public function getRecette(): ?Recette
+    {
+        return $this->recette;
+    }
+
+    public function setRecette(?Recette $recette): static
+    {
+        $this->recette = $recette;
 
         return $this;
     }
