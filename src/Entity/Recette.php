@@ -16,13 +16,25 @@ class Recette
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50, nullable: false)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de la recette doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'Le nom de la recette doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?int $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'La desciption de la recette doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de la recette doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
