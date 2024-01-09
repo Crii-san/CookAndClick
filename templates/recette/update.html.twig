@@ -1,0 +1,13 @@
+{% set title = recette.nom %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <h1> Mettre a jour la recette : {{ title }}</h1>
+
+{% endblock %}
+
+{% block title %}
+   update {{ title }}
+{% endblock %}
