@@ -23,6 +23,14 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    #[Route('/recette/{id}')]
+    public function show(Recette $recette): Response
+    {
+        return $this->render('recette/show.html.twig', [
+            'recette' => $recette,
+        ]);
+    }
+
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette)
     {
