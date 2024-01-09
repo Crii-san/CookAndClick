@@ -21,15 +21,17 @@ class RecetteController extends AbstractController
             'recettes' => $recettes, 'search' => $searchText,
         ]);
     }
+
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette)
     {
         return $this->render('recette/update.html.twig', parameters: [
-            'recette' => $recette
+            'recette' => $recette,
         ]);
-
     }
 
-
-
+    #[Route('/recette/delete/{id<\d+>}', name: 'app_recette_delete')]
+    public function delete(Recette $recette)
+    {
+    }
 }
