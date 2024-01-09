@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Recette;
 use App\Repository\RecetteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,4 +21,13 @@ class RecetteController extends AbstractController
             'recettes' => $recettes, 'search' => $searchText,
         ]);
     }
+
+    #[Route('/recette/{id}')]
+    public function show(Recette $recette): Response
+    {
+        return $this->render('recette/show.html.twig', [
+            'recette' => $recette,
+        ]);
+    }
+
 }
