@@ -1,0 +1,13 @@
+{% set title = recette.nom %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> Suppression de la recette : {{ title }}</h1>
+
+{% endblock %}
+
+{% block title %}
+    Suppression de {{ title }}
+{% endblock %}
