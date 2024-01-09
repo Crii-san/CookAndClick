@@ -41,5 +41,6 @@ class RecetteController extends AbstractController
     #[Route('/recette/create', name: 'app_recette_create')]
     public function create()
     {
+        return $this->render('recette/create.html.twig');
     }
 }
