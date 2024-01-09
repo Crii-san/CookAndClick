@@ -1,0 +1,20 @@
+{% set title = recette.nom %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <h1> Édition de la recette : {{ title }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="w-100 p-3">
+        <input type="submit" class="btn btn-primary" value="Modifier" />
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block title %}
+    Édition de {{ title }}
+{% endblock %}
