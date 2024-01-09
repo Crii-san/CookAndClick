@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Recette;
+use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,8 +26,11 @@ class RecetteController extends AbstractController
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette)
     {
+        $form = $this->createForm(RecetteType::class, $recette);
+
         return $this->render('recette/update.html.twig', parameters: [
             'recette' => $recette,
+            'form' => $form,
         ]);
     }
 
