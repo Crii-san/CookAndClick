@@ -36,3 +36,8 @@ _Les commandes_ :
 - Il faut copier le .env et le renomer en .env.local.
 - Ensuite il suffit de remplacer la URI par : 
         ``DATABASE_URL="mysql://[identifient]:[mot de passe]@mysql:3306/[le nom de la bd]?version=10.2.25"``
+
+### Connection admin
+- Le mot de passe : ``test``
+- L'adresses mail : ``test@example.com``
+
