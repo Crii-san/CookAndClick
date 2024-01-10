@@ -32,11 +32,11 @@ class DashboardController extends AbstractDashboardController
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('Allergènes', 'fas fa-list', Allergene::class),
-            MenuItem::linkToCrud('Ingredients', 'fas fa-list', Ingredient::class),
-            MenuItem::linkToCrud('Catégories', 'fas fa-list', Categorie::class),
-            MenuItem::linkToCrud('Recette', 'fas fa-list', Recette::class),
-            MenuItem::linkToCrud('User', 'fas fa-list', User::class),
+            MenuItem::linkToCrud('Allergène', 'fa-solid fa-skull-crossbones', Allergene::class),
+            MenuItem::linkToCrud('Ingredient', 'fa-solid fa-carrot', Ingredient::class),
+            MenuItem::linkToCrud('Catégorie', 'fas fa-layer-group', Categorie::class),
+            MenuItem::linkToCrud('Recette', 'fa-solid fa-bowl-food', Recette::class),
+            MenuItem::linkToCrud('User', 'fa-solid fa-user', User::class),
             MenuItem::linkToCrud('Etape', 'fas fa-list', Etape::class),
         ];
     }
