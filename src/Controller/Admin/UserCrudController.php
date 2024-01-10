@@ -25,7 +25,6 @@ class UserCrudController extends AbstractCrudController
         $this->passwordHasher = $passwordHasher;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -46,6 +45,13 @@ class UserCrudController extends AbstractCrudController
             TextField::new('pseudo'),
             TextField::new('tel'),
         ];
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->setUserPassword($entityInstance);
+
+        parent::updateEntity($entityManager, $entityInstance);
     }
 
     public function setUserPassword($entityInstance): void
