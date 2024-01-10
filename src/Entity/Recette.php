@@ -27,6 +27,9 @@ class Recette
 
     #[ORM\Column(length: 50, nullable: true)]
     #[Assert\Positive]
+    #[Assert\LessThanOrEqual(
+        value: 5,
+    )]
     private ?int $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
@@ -40,14 +43,23 @@ class Recette
 
     #[ORM\Column(nullable: true)]
     #[Assert\Positive]
+    #[Assert\LessThanOrEqual(
+        value: 50,
+    )]
     private ?int $nbPersonne = null;
 
     #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero]
+    #[Assert\LessThan(
+        value: 90,
+    )]
     private ?int $minutes = null;
 
     #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero]
+    #[Assert\LessThan(
+        value: 24,
+    )]
     private ?int $heures = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
