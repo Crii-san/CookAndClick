@@ -24,13 +24,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    #[Route('/recette/{id}', name: 'app_recette_show')]
-    public function show(Recette $recette): Response
-    {
-        return $this->render('recette/show.html.twig', [
-            'recette' => $recette,
-        ]);
-    }
+
 
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette, Request $request, EntityManagerInterface $entityManager): Response
@@ -70,5 +64,13 @@ class RecetteController extends AbstractController
         'recette' => $recette,
         'form' => $form,
     ]);
+    }
+
+    #[Route('/recette/{id}', name: 'app_recette_show')]
+    public function show(Recette $recette): Response
+    {
+        return $this->render('recette/show.html.twig', [
+            'recette' => $recette,
+        ]);
     }
 }
