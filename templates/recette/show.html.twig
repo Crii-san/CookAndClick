@@ -7,37 +7,48 @@
     <h2>{{ recette.nom }}</h2>
 
     <div class="description_recette">
-        <h4>Description :</h4>
+        <h4>Description </h4>
         <dl>
-            <dt>Catégorie</dt>
-            <dd>{{ recette.categorie.nom }}</dd>
-            <dt>Temps de préparation</dt>
-            <dd>{{ recette.heures }}:{{ recette.minutes }}</dd>
-            <dt>Nombre de personnes</dt>
-            <dd>{{ recette.nbPersonne }}</dd>
+            <div class="description-row">
+                <dt>Catégorie</dt>
+                <dd>{{ recette.categorie.nom }}</dd>
+            </div>
+            <div class="description-row">
+                <dt>Temps de préparation</dt>
+                <dd>{{ recette.heures }}:{{ recette.minutes }}</dd>
+            </div>
+            <div class="description-row">
+                <dt>Nombre de personnes</dt>
+                <dd>{{ recette.nbPersonne }}</dd>
+            </div>
+            <div class="description-row">
+                <dt>Difficulté</dt>
+                <dd>{{ recette.nivDifficulte }}/5</dd>
+            </div>
         </dl>
     </div>
 
-    <div class="desc_ingrédients">
-        <h4>Ingrédients :</h4>
-        <ul>
-            {% for etape in recette.etapes %}
-                {% for ingredient in etape.ingredients %}
-                    <li>{{ ingredient.nom }}</li>
+    <div class="conteneur">
+        <div class="desc_ingrédients">
+            <h4>Ingrédients </h4>
+            <ul>
+                {% for etape in recette.etapes %}
+                    {% for ingredient in etape.ingredients %}
+                        <li>{{ ingredient.nom }}</li>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
+            </ul>
+        </div>
 
-    <div class="desc_étapes">
-        <h4>Étapes :</h4>
-        <ol>
-            {% for etape in recette.etapes %}
-                <li>{{ etape.description }}</li>
-            {% endfor %}
-        </ol>
+        <div class="desc_étapes">
+            <h4>Étapes </h4>
+            <ol>
+                {% for etape in recette.etapes %}
+                    <li>{{ etape.description }}</li>
+                {% endfor %}
+            </ol>
+        </div>
     </div>
-
 
 {% endblock %}
 
