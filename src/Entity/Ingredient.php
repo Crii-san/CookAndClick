@@ -30,7 +30,7 @@ class Ingredient
     #[ORM\ManyToMany(targetEntity: Allergene::class, inversedBy: 'ingredient')]
     private Collection $allergenes;
 
-    #[ORM\ManyToMany(targetEntity: Etape::class, mappedBy: 'ingredient')]
+    #[ORM\ManyToMany(targetEntity: Etape::class, mappedBy: 'ingredients')]
     private Collection $etapes;
 
     public function __construct()
