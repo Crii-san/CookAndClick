@@ -22,6 +22,15 @@
     background-size: contain;
 }
 
+.en-tete a {
+    text-decoration: none;
+    color: black;
+}
+
+.en-tete a:hover {
+    color: darkred;
+}
+
 .menu {
     display: flex;
     flex-direction: column;
