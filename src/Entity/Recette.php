@@ -26,6 +26,7 @@ class Recette
     private ?string $nom = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Positive]
     private ?int $nivDifficulte = null;
 
     #[ORM\Column(length: 500, nullable: true)]
@@ -38,12 +39,15 @@ class Recette
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Positive]
     private ?int $nbPersonne = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero]
     private ?int $minutes = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero]
     private ?int $heures = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
