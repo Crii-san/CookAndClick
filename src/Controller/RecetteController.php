@@ -73,6 +73,12 @@ class RecetteController extends AbstractController
     ]);
     }
 
+    #[Route('/recette/createOk', name: 'app_recette_createOk')]
+    public function createOk(): Response
+    {
+        return $this->render('recette/createOk.html.twig');
+    }
+
     #[Route('/recette/{id}', name: 'app_recette_show')]
     public function show(Recette $recette): Response
     {
