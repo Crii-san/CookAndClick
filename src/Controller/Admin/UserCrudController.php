@@ -54,6 +54,13 @@ class UserCrudController extends AbstractCrudController
         parent::updateEntity($entityManager, $entityInstance);
     }
 
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->setUserPassword($entityInstance);
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
     public function setUserPassword($entityInstance): void
     {
         $request = $this->getContext()->getRequest();
