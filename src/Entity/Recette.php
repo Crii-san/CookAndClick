@@ -17,6 +17,7 @@ class Recette
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
         max: 50,
@@ -25,14 +26,16 @@ class Recette
     )]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50, nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\Positive]
     #[Assert\LessThanOrEqual(
         value: 5,
     )]
     private ?int $nivDifficulte = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 500, nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
         max: 50,
@@ -41,21 +44,24 @@ class Recette
     )]
     private ?string $description = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\Positive]
     #[Assert\LessThanOrEqual(
         value: 50,
     )]
     private ?int $nbPersonne = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\PositiveOrZero]
     #[Assert\LessThan(
         value: 90,
     )]
     private ?int $minutes = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
     #[Assert\PositiveOrZero]
     #[Assert\LessThan(
         value: 24,
@@ -64,6 +70,7 @@ class Recette
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private ?Categorie $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'recette', targetEntity: Etape::class)]
