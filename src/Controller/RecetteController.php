@@ -63,12 +63,8 @@ class RecetteController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($recette);
             $entityManager->flush();
-            $id = $recette->getId();
-
-            return $this->redirectToRoute('app_recette_show', parameters: [
-                'id' => $id,
-            ]);
         }
 
         return $this->render('recette/create.html.twig', parameters: [
