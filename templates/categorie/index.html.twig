@@ -3,15 +3,17 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-    <h1>Les catégories</h1>
+    <h1>Les catégories de recette</h1>
 
-    <ul>
+    <div class="row justify-content-around">
         {% for categorie in categories %}
-            <li>
+            <div class="col-md-4 col-sm-6">
                 <a href="/categorie/{{ categorie.id }}">
-                <span class="recette">{{ categorie.nom }}</span>
+                <span style="background-color:#BAA898; border-radius: 10px; display: block; text-align: center; margin-bottom: 10px;">
+                    {{ categorie.nom }}
+                </span>
                 </a>
-            </li>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}
