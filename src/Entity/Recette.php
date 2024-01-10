@@ -64,7 +64,7 @@ class Recette
     #[Assert\NotBlank]
     #[Assert\PositiveOrZero]
     #[Assert\LessThan(
-        value: 24,
+        value: 1000,
     )]
     private ?int $heures = null;
 
