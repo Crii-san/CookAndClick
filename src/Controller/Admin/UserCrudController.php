@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -42,7 +43,18 @@ class UserCrudController extends AbstractCrudController
                 ]),
             TextField::new('nom'),
             TextField::new('prenom'),
-            ArrayField::new('roles'),
+            ArrayField::new('roles')
+                ->formatValue(function ($value) {
+                    if (in_array('ROLE_ADMIN', $value)) {
+                        return '<span class="material-symbols-outlined">manage_accounts</span>
+                                <span class="material-symbols-outlined">person</span>';
+                    }
+                    if (in_array('ROLE_USER', $value)) {
+                        return '<span class="material-symbols-outlined">person</span>';
+                    } else {
+                        return '';
+                    }
+                }),
             DateField::new('datenais'),
             TextField::new('pseudo'),
             TextField::new('tel'),
@@ -72,5 +84,10 @@ class UserCrudController extends AbstractCrudController
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $password);
             $entityInstance->setPassword($hashedPassword);
         }
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets->addCssFile('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
     }
 }
