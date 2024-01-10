@@ -16,26 +16,61 @@ class Recette
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de la recette doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'Le nom de la recette doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(
+        value: 5,
+    )]
     private ?int $nivDifficulte = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 500, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 500,
+        minMessage: 'La desciption de la recette doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de la recette doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(
+        value: 50,
+    )]
     private ?int $nbPersonne = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\PositiveOrZero]
+    #[Assert\LessThan(
+        value: 90,
+    )]
     private ?int $minutes = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\PositiveOrZero]
+    #[Assert\LessThan(
+        value: 1000,
+    )]
     private ?int $heures = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private ?Categorie $categorie = null;
 
     #[ORM\OneToMany(mappedBy: 'recette', targetEntity: Etape::class)]
