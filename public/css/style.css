@@ -1,25 +1,37 @@
 @import url('https://fonts.cdnfonts.com/css/white-star-free');
 @import url('https://fonts.cdnfonts.com/css/garet');
 
+h1, h2, h4, ul, dl {
+    margin: 15px;
+}
 .logo {
     font-family: 'White Star free', sans-serif;
-    font-size: 50px;
+    font-size: 40px;
     margin-top: 15px;
 }
 
 .logo2 {
     font-family: 'Garet', sans-serif;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .en-tete{
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     background-image: url('../img/en-tete.png');
     background-size: contain;
+}
+
+.en-tete a {
+    text-decoration: none;
+    color: black;
+}
+
+.en-tete a:hover {
+    color: darkred;
 }
 
 .menu {
@@ -28,6 +40,9 @@
     background-color: #BAA898 ;
     align-items: center;
     justify-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 0 0 15px 15px;
 }
 
 .slogan{
@@ -37,5 +52,50 @@
 
 .slogan1 {
     font-family: 'White Star free', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
+}
+
+.description_recette dl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.description_recette .description-row {
+    text-align: center;
+}
+.description_recette{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.desc_ingrédients, .desc_étapes {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc_étapes {
+    margin-left: 50px;
+}
+
+.conteneur {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .description_recette .description-row {
+        flex-basis: 50%;
+        text-align: center;
+    }
+    .conteneur {
+        display: flex;
+        flex-direction: column;
+    }
+    .desc_étapes, .desc_ingrédients {
+        margin-left: 10px;
+    }
+
 }
