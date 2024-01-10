@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -45,5 +46,16 @@ class UserCrudController extends AbstractCrudController
             TextField::new('pseudo'),
             TextField::new('tel'),
         ];
+    }
+
+    public function setUserPassword($entityInstance): void
+    {
+        $request = $this->getContext()->getRequest();
+        $password = $request->get('User')['password'] ?? null;
+
+        if (!empty($password)) {
+            $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $password);
+            $entityInstance->setPassword($hashedPassword);
+        }
     }
 }
