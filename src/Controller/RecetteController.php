@@ -56,10 +56,21 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/recette/create', name: 'app_recette_create')]
-    public function create()
+    public function create( Request $request, EntityManagerInterface $entityManager)
     {
         $recette = new Recette();
         $form = $this->createForm(RecetteType::class, $recette);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $id = $recette->getId();
+
+            return $this->redirectToRoute('app_recette_show', parameters: [
+                'id' => $id,
+            ]);
+        }
+
         return $this->render('recette/create.html.twig', parameters: [
         'recette' => $recette,
         'form' => $form,
