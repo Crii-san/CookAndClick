@@ -69,3 +69,18 @@ h1, h2, h4, ul, dl {
     padding-top: 20px;
 }
 
+.desc_ingrédients, .desc_étapes {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc_étapes {
+    margin-left: 50px;
+}
+
+.conteneur {
+    display: flex;
+    justify-content: space-between;
+}
+
+
