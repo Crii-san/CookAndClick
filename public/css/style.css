@@ -84,3 +84,18 @@ h1, h2, h4, ul, dl {
 }
 
 
+@media only screen and (max-width: 600px) {
+
+    .description_recette .description-row {
+        flex-basis: 50%;
+        text-align: center;
+    }
+    .conteneur {
+        display: flex;
+        flex-direction: column;
+    }
+    .desc_étapes, .desc_ingrédients {
+        margin-left: 10px;
+    }
+
+}
