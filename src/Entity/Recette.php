@@ -38,7 +38,7 @@ class Recette
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
-        max: 50,
+        max: 500,
         minMessage: 'La desciption de la recette doit faire au minimum {{ limit }} caractères',
         maxMessage: 'La description de la recette doit faire au maximum {{ limit }} caractères',
     )]
