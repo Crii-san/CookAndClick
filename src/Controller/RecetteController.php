@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    #[Route('/recette/{id}')]
+    #[Route('/recette/{id}', name: 'app_recette_show')]
     public function show(Recette $recette): Response
     {
         return $this->render('recette/show.html.twig', [
@@ -32,9 +33,19 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
-    public function update(Recette $recette)
+    public function update(Recette $recette, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(RecetteType::class, $recette);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $id = $recette->getId();
+
+            return $this->redirectToRoute('app_recette_show', parameters: [
+                'id' => $id,
+            ]);
+        }
 
         return $this->render('recette/update.html.twig', parameters: [
             'recette' => $recette,
