@@ -47,10 +47,9 @@ final class CategorieFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $faker = Faker\Factory::create();
-        $name = $faker->word();
+        $nom = self::faker()->word();
         return [
-            'nom' => mb_convert_case($name, MB_CASE_TITLE),
+            'nom' => mb_convert_case($nom, MB_CASE_TITLE),
         ];
     }
 

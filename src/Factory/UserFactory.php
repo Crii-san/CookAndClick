@@ -48,12 +48,11 @@ final class UserFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $faker = Faker\Factory::create('fr_FR');
-        $nom = $faker->lastName();
-        $prenom = $faker->firstName();
+        $nom = self::faker()->lastName();
+        $prenom = self::faker()->firstName();
         $nom = $this->normalizeName($nom);
         $prenom = $this->normalizeName($prenom);
-        $variable = $faker->numerify();
+        $variable = self::faker()->numerify();
         $email = "user-$variable@example.com";
 
         return [
@@ -63,8 +62,8 @@ final class UserFactory extends ModelFactory
             'password' => 'test',
             'prenom' => $prenom,
             'roles' => [],
-            'dateNais' => $faker->dateTimeBetween('-50 years', '-18 years'),
-            'tel' => $faker->numerify('06########'),
+            'dateNais' => self::faker()->dateTimeBetween('-50 years', '-18 years'),
+            'tel' => self::faker()->numerify('06########'),
         ];
     }
 
