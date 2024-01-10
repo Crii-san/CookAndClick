@@ -64,6 +64,11 @@ class RecetteController extends AbstractController
     #[Route('/recette/create', name: 'app_recette_create')]
     public function create()
     {
-        return $this->render('recette/create.html.twig');
+        $recette = new Recette();
+        $form = $this->createForm(RecetteType::class, $recette);
+        return $this->render('recette/create.html.twig', parameters: [
+        'recette' => $recette,
+        'form' => $form,
+    ]);
     }
 }
