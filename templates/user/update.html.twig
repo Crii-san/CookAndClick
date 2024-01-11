@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Édition de {{ user.nom | capitalize }} {{ user.prenom | capitalize }}{% endblock %}
+
 {% block body %}
 
-{% endblock %}
-
-{% block title %}
+    <h1>Édition de {{ user.nom | capitalize }} {{ user.prenom | capitalize }}</h1>
 
 {% endblock %}
-
