@@ -7,6 +7,12 @@
     <h1> {{ title }}</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
+    <br>
+    <h3>Ajouter une etape</h3>
+    <div class="w-100 p-3">
+        <input type="button" onclick="{{ path('app_etape_create')}} "class="btn btn-secondary" value="Ajouter une etape" />
+    </div>
+    <h3>Enregistrer votre recette</h3>
     <div class="w-100 p-3">
         <input type="submit" class="btn btn-primary" value="Ajouter" />
     </div>
