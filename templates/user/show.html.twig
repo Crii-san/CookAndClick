@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+
+    <h1> {{ user.nom | capitalize}} {{ user.prenom | capitalize}}</h1>
+
+    <dl>
+        <dt> Nom </dt>
+        <dd> {{ user.nom | capitalize}} </dd>
+
+        <dt> Prénom </dt>
+        <dd> {{ user.prenom | capitalize}} </dd>
+
+        <dt> Date de Naissance </dt>
+        <dd> {{ user.dateNais | date('d/m/Y') }}</dd>
+
+        <dt> Email </dt>
+        <dd> {{ user.email }}</dd>
+
+        <dt> Téléphone </dt>
+        <dd> {{ user.tel }}</dd>
+
+        <dt> Allergène </dt>
+        <dd>
+            {% if user.allergene is not empty %}
+                {{ user.allergene.nom }}
+            {% else %}
+                Aucun
+            {% endif %}
+        </dd>
+
+    </dl>
+
+{% endblock %}
+
