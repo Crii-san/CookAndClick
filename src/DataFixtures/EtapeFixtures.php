@@ -16,64 +16,38 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
         $this->recetteRepository = $recetteRepository;
     }
 
+    private function creationEtapes($recetteId, $jsonFilePath): void
+    {
+        $contenuFichierDecode = json_decode(file_get_contents(__DIR__."/data/{$jsonFilePath}"));
+        $numero = 1;
+
+        foreach ($contenuFichierDecode as $element) {
+            $description = $element->description;
+
+            EtapeFactory::createOne([
+                'description' => $description,
+                'numero' => $numero,
+                'ingredients' => [IngredientFactory::random()],
+                'recette' => $this->recetteRepository->find($recetteId),
+            ]);
+
+            ++$numero;
+        }
+    }
+
     public function load(ObjectManager $manager): void
     {
         // Etapes de la recette Pizza
-        $repertoire = __DIR__;
-        $contenuFichier = file_get_contents("{$repertoire}\data\Etape_pizza.json");
-        $contenuFichierDecode = json_decode($contenuFichier);
+        $this->creationEtapes(3, 'Etape_pizza.json');
 
-        $numero = 1;
-
-        foreach ($contenuFichierDecode as $element) {
-            $description = $element->description;
-
-            EtapeFactory::createOne(
-                ['description' => $description,
-                 'numero' => $numero,
-                    'ingredients' => [IngredientFactory::random()],
-                    'recette' => $this->recetteRepository->find(3)]);
-            ++$numero;
-        }
-
-        // Etapes de la recette salade
-        $repertoire = __DIR__;
-        $contenuFichier = file_get_contents("{$repertoire}\data\Etape_salade_tomate.json");
-        $contenuFichierDecode = json_decode($contenuFichier);
-
-        $numero = 1;
-
-        foreach ($contenuFichierDecode as $element) {
-            $description = $element->description;
-
-            EtapeFactory::createOne(
-                ['description' => $description,
-                    'numero' => $numero,
-                    'ingredients' => [IngredientFactory::random()],
-                    'recette' => $this->recetteRepository->find(2)]);
-            ++$numero;
-        }
+        // Etapes de la recette Salade
+        $this->creationEtapes(2, 'Etape_salade_tomate.json');
 
         // Etapes de la recette Gateau au chocolat
-        $repertoire = __DIR__;
-        $contenuFichier = file_get_contents("{$repertoire}\data\Etape_gateau_chocolat.json");
-        $contenuFichierDecode = json_decode($contenuFichier);
-
-        $numero = 1;
-
-        foreach ($contenuFichierDecode as $element) {
-            $description = $element->description;
-
-            EtapeFactory::createOne(
-                ['description' => $description,
-                    'numero' => $numero,
-                    'ingredients' => [IngredientFactory::random()],
-                    'recette' => $this->recetteRepository->find(1)]);
-            ++$numero;
-        }
+        $this->creationEtapes(1, 'Etape_gateau_chocolat.json');
 
         // Etapes créées aléatoirement
-        EtapeFactory::createMany(90, function () {
+        EtapeFactory::createMany(70, function () {
             $nbIngredients = rand(0, 5);
             $nb = rand(4, 13);
 
