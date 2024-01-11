@@ -6,7 +6,7 @@
     <h1> Liste des Utilisateurs </h1>
     <ul>
         {% for utilisateur in utilisateurs %}
-            <li><span class="utilisateur">{{ utilisateur.nom | capitalize}} {{ utilisateur.prenom | capitalize}}</span></li>
+            <li><a href="{{ path('app_user_show', {id: utilisateur.idUser}) }}" class="utilisateurs"><span class="utilisateur">{{ utilisateur.nom | capitalize}} {{ utilisateur.prenom | capitalize}}</span></a></li>
         {% endfor %}
     </ul>
 {% endblock %}
