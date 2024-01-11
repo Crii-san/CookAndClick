@@ -5,5 +5,10 @@
 {% block body %}
     <div>
         <h4>Les nouvelles recettes</h4>
+        <ul>
+            {% for recette in recettes %}
+                <li>{{ recette.nom }}</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
