@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class RecetteController extends AbstractController
 {
@@ -24,8 +25,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-
-
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -47,6 +47,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/recette/delete/{id<\d+>}', name: 'app_recette_delete')]
     public function delete(Recette $recette)
     {
@@ -55,8 +56,9 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/recette/create', name: 'app_recette_create')]
-    public function create( Request $request, EntityManagerInterface $entityManager)
+    public function create(Request $request, EntityManagerInterface $entityManager)
     {
         $recette = new Recette();
         $form = $this->createForm(RecetteType::class, $recette);
@@ -75,12 +77,14 @@ class RecetteController extends AbstractController
     ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/recette/createOk', name: 'app_recette_createOk')]
     public function createOk(): Response
     {
         return $this->render('recette/createOk.html.twig');
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/recette/{id}', name: 'app_recette_show')]
     public function show(Recette $recette): Response
     {
