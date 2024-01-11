@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Allergene;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -28,6 +29,10 @@ class UserType extends AbstractType
             ->add('allergene', EntityType::class, [
                 'class' => Allergene::class,
                 'choice_label' => 'nom',
+                'query_builder' => function (EntityRepository $entityRepository) {
+                    return $entityRepository->createQueryBuilder('a')
+                        ->orderBy('a.nom', 'ASC');
+                },
             ])
         ;
     }
