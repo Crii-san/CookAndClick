@@ -24,13 +24,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    #[Route('/recette/{id}', name: 'app_recette_show')]
-    public function show(Recette $recette): Response
-    {
-        return $this->render('recette/show.html.twig', [
-            'recette' => $recette,
-        ]);
-    }
+
 
     #[Route('/recette/update/{id<\d+>}', name: 'app_recette_update')]
     public function update(Recette $recette, Request $request, EntityManagerInterface $entityManager): Response
@@ -62,8 +56,36 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/recette/create', name: 'app_recette_create')]
-    public function create()
+    public function create( Request $request, EntityManagerInterface $entityManager)
     {
-        return $this->render('recette/create.html.twig');
+        $recette = new Recette();
+        $form = $this->createForm(RecetteType::class, $recette);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($recette);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_recette_createOk');
+        }
+
+        return $this->render('recette/create.html.twig', parameters: [
+        'recette' => $recette,
+        'form' => $form,
+    ]);
+    }
+
+    #[Route('/recette/createOk', name: 'app_recette_createOk')]
+    public function createOk(): Response
+    {
+        return $this->render('recette/createOk.html.twig');
+    }
+
+    #[Route('/recette/{id}', name: 'app_recette_show')]
+    public function show(Recette $recette): Response
+    {
+        return $this->render('recette/show.html.twig', [
+            'recette' => $recette,
+        ]);
     }
 }
