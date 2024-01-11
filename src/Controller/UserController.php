@@ -25,7 +25,7 @@ class UserController extends AbstractController
     {
         $currentUser = $this->getUser();
 
-        if ($currentUser->getIdUser() !== $user->getIdUser()) {
+        if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
             $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
             return $this->render('error.html.twig', ['error_message' => $error_message]);
         }
