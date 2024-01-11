@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1> Liste des Utilisateurs </h1>
+    <ul>
+        {% for utilisateur in utilisateurs %}
+            <li><span class="utilisateur">{{ utilisateur.nom | capitalize}} {{ utilisateur.prenom | capitalize}}</span></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
