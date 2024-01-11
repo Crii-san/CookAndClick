@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur créé avec succès!</h1>
+
+    <p>Merci d'avoir rejoint notre plateforme. <br>
+        Vous pouvez maintenant vous connecter avec vos identifiants.</p>
+    <a href="{{ path('app_login') }}" class="btn btn-dark">Se connecter</a>
+
+{% endblock %}
+
