@@ -48,12 +48,6 @@ class RecetteFixtures extends Fixture implements DependentFixtureInterface
                 'heures' => $heures,
                 'categorie' => $categorie]);
         }
-
-        RecetteFactory::createMany(10, function () {
-            return [
-                'categorie' => CategorieFactory::random(),
-            ];
-        });
     }
 
     public function getDependencies(): array
