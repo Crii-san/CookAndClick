@@ -49,7 +49,7 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
         // Etapes créées aléatoirement
         EtapeFactory::createMany(70, function () {
             $nbIngredients = rand(0, 5);
-            $nb = rand(4, 13);
+            $nb = rand(4, 12);
 
             $ingredients = [];
             for ($i = 0; $i < $nbIngredients; ++$i) {
