@@ -1,0 +1,19 @@
+{% set title = "Création d'une nouvelle etape " %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> {{ title }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="w-100 p-3">
+        <input type="submit" class="btn btn-primary" value="Ajouter" />
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
