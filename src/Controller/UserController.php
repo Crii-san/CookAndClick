@@ -96,11 +96,17 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('delete')->isClicked()) {
+                $isAdmin = in_array('ROLE_ADMIN', $user->getRoles(), true);
+
                 $entityManager->remove($user);
                 $entityManager->flush();
 
+                if (!$isAdmin) {
+                    return $this->redirectToRoute('app_logout');
+                }
+
                 return $this->redirectToRoute('app_user');
-            } else {
+            } elseif (!$form->get('delete')->isClicked()) {
                 return $this->redirectToRoute('app_user_show', ['id' => $user->getIdUser()]);
             }
         }
