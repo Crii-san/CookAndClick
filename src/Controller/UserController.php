@@ -23,6 +23,13 @@ class UserController extends AbstractController
     #[Route('/user/{id}', name: 'app_user_show')]
     public function show(User $user): Response
     {
+        $currentUser = $this->getUser();
+
+        if ($currentUser->getIdUser() !== $user->getIdUser()) {
+            $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
+            return $this->render('error.html.twig', ['error_message' => $error_message]);
+        }
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
