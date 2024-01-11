@@ -57,9 +57,31 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/create', name: 'app_user_create')]
-    public function create(): Response
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('user/create.html.twig');
+        $user = new User();
+
+        $form = $this->createForm(UserType::class, $user, ['validation_groups' => ['create']]);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $password = $form->get('password')->getData();
+            if ($password) {
+                $hashedPassword = hash('sha512', $password);
+                $user->setPassword($hashedPassword);
+            }
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->render('user/createOk.html.twig');
+        }
+
+        return $this->render('user/create.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
     }
 
     #[Route('/user/delete/{id<\d+>}', name: 'app_user_delete')]
