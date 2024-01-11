@@ -28,10 +28,5 @@ class IngredientFixtures extends Fixture
                 ['nom' => $nom,
                  'allergenes' => $allergenes]);
         }
-
-        for ($i = 1; $i <= 15; ++$i) {
-            $var = AllergeneFactory::random();
-            IngredientFactory::createOne(['allergenes' => [$var]]);
-        }
     }
 }
