@@ -35,8 +35,39 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
             ++$numero;
         }
 
-        // Etapes de la recette Salade
+        // Etapes de la recette salade
+        $repertoire = __DIR__;
+        $contenuFichier = file_get_contents("{$repertoire}\data\Etape_salade_tomate.json");
+        $contenuFichierDecode = json_decode($contenuFichier);
+
+        $numero = 1;
+
+        foreach ($contenuFichierDecode as $element) {
+            $description = $element->description;
+
+            EtapeFactory::createOne(
+                ['description' => $description,
+                    'numero' => $numero,
+                    'recette' => $this->recetteRepository->find(2)]);
+            ++$numero;
+        }
+
         // Etapes de la recette Gateau au chocolat
+        $repertoire = __DIR__;
+        $contenuFichier = file_get_contents("{$repertoire}\data\Etape_gateau_chocolat.json");
+        $contenuFichierDecode = json_decode($contenuFichier);
+
+        $numero = 1;
+
+        foreach ($contenuFichierDecode as $element) {
+            $description = $element->description;
+
+            EtapeFactory::createOne(
+                ['description' => $description,
+                    'numero' => $numero,
+                    'recette' => $this->recetteRepository->find(1)]);
+            ++$numero;
+        }
 
         // Etapes créées aléatoirement
         EtapeFactory::createMany(90, function () {
