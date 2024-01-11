@@ -7,6 +7,7 @@ use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,8 +52,14 @@ class RecetteController extends AbstractController
     #[Route('/recette/delete/{id<\d+>}', name: 'app_recette_delete')]
     public function delete(Recette $recette)
     {
+        $form = $this->createFormBuilder($recette)
+            ->add('delete', SubmitType::class, ['label' => 'cancel'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+            ->getForm();
+
         return $this->render('recette/delete.html.twig', parameters: [
             'recette' => $recette,
+            'form' => $form,
         ]);
     }
 
