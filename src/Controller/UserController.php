@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
-use Cassandra\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,6 +18,7 @@ class UserController extends AbstractController
 
         if (!$this->isGranted('ROLE_ADMIN')) {
             $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
+
             return $this->render('error.html.twig', ['error_message' => $error_message]);
         }
 
@@ -29,10 +30,12 @@ class UserController extends AbstractController
     #[Route('/user/update/{id<\d+>}', name: 'app_user_update')]
     public function update(User $user): Response
     {
+        $form = $this->createForm(UserType::class, $user);
+
         return $this->render('user/update.html.twig', [
             'user' => $user,
+            'form' => $form,
         ]);
-
     }
 
     #[Route('/user/create', name: 'app_user_create')]
@@ -47,7 +50,6 @@ class UserController extends AbstractController
         return $this->render('user/delete.html.twig', [
             'user' => $user,
         ]);
-
     }
 
     #[Route('/user/{id}', name: 'app_user_show')]
@@ -66,4 +68,3 @@ class UserController extends AbstractController
         ]);
     }
 }
-
