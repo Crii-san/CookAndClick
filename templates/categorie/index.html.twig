@@ -3,17 +3,12 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-    <h1>Les catégories de recette</h1>
+    <h1>Toutes les recettes par catégorie</h1>
 
-    <div class="row justify-content-around">
         {% for categorie in categories %}
-            <div class="col-md-4 col-sm-6">
-                <a href="/categorie/{{ categorie.id }}">
-                <span style="background-color:#BAA898; border-radius: 10px; display: block; text-align: center; margin-bottom: 10px;">
-                    {{ categorie.nom }}
-                </span>
+                <a class="btn btn-primary m-3 w-100 p-3" href="/categorie/{{ categorie.id }}" role="button"
+                   style="background-color:#BAA898; border: none; color: black">
+                    <span> {{ categorie.nom }}s </span>
                 </a>
-            </div>
         {% endfor %}
-    </div>
 {% endblock %}
