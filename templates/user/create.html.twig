@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Création d'un nouveau contact{% endblock %}
+{% set titre = "Création d'un nouveau utilisateur" %}
+
+
+{% block title %}{{ titre }}{% endblock %}
 
 {% block body %}
 
-    <h1>Création d'un nouveau utilisateur</h1>
+    <h1>{{titre}}</h1>
 
 {% endblock %}

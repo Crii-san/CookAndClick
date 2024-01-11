@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% set nomPrenom = user.nom | capitalize ~ ' ' ~ user.prenom | capitalize %}
+
 {% block title %}
-    Suppression de {{ user.nom | capitalize }} {{ user.prenom | capitalize }}
+    Suppression de {{ nomPrenom }}
 {% endblock %}
 
 {% block body %}
 
-    <h1>Suppression de {{ user.nom | capitalize }} {{ user.prenom | capitalize }}</h1>
+    <h1>Suppression de {{ nomPrenom }}</h1>
 
 {% endblock %}
 
