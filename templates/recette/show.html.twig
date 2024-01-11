@@ -5,11 +5,11 @@
 {% block body %}
 
     <h2>{{ recette.nom }}</h2>
-    <a href="{{ path('app_recette_update', {'id': recette.id}) }}" class="material-symbols-outlined">
+    <a href="{{ path('app_recette_update', {'id': recette.id}) }}" class="material-symbols-outlined text-warning">
             edit
         </a>
 
-        <a href="{{ path('app_recette_delete', {'id': recette.id}) }}" class="material-symbols-outlined">
+        <a href="{{ path('app_recette_delete', {'id': recette.id}) }}" class="material-symbols-outlined text-danger">
             delete
         </a>
 
