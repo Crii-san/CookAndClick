@@ -13,6 +13,9 @@
         <dt> Prénom </dt>
         <dd> {{ user.prenom | capitalize}} </dd>
 
+        <dt> Date de Naissance </dt>
+        <dd> {{ user.dateNais | date('d/m/Y') }}</dd>
+
         <dt> Email </dt>
         <dd> {{ user.email }}</dd>
 
