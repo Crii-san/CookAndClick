@@ -6,10 +6,6 @@
 
     <h1>Liste des Recettes</h1>
 
-    <ul>
-        {% for recette in recettes %}
-            <li><a href="{{ path('app_recette_show', {id: recette.id}) }}" class="recettes"><span class="recette">{{ recette.nom }}</span></a></li>
-        {% endfor %}
-    </ul>
+    {% include 'recette/_recettes.html.twig' %}
 
 {% endblock %}
