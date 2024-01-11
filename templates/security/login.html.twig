@@ -14,9 +14,13 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
+    <h1 class="h3 m-3 font-weight-normal"
+        style="text-align: center;">
+            Avec Cook & Click, il suffit d'un 'click' pour devenir un chef.
+    </h1>
+
     <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus >
     <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
@@ -24,8 +28,9 @@
            value="{{ csrf_token('authenticate') }}"
     >
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Connection
+    <button class="btn btn-lg btn-primary w-100 p-3 mt-3" type="submit"
+            style="background-color: #BAA898; color : black; border: none">
+        Se connecter
     </button>
 </form>
 {% endblock %}
