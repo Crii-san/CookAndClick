@@ -3,7 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Etape;
+use App\Entity\Ingredient;
+use App\Entity\Recette;
+use App\Repository\IngredientRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -11,11 +16,14 @@ class EtapeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
             ->add('numero')
             ->add('description')
-            ->add('ingredients')
-            ->add('recette')
+            ->add('recette', EntityType::class, [
+                'class' => recette::class,
+                'choice_label' => 'nom',
+            ])
         ;
     }
 
