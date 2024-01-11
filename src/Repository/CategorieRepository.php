@@ -21,6 +21,15 @@ class CategorieRepository extends ServiceEntityRepository
         parent::__construct($registry, Categorie::class);
     }
 
+    public function findByName(string $name): ?Categorie
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.nom = :name')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return Categorie[] Returns an array of Categorie objects
 //     */
