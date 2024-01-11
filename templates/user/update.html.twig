@@ -6,13 +6,14 @@
 
 {% block body %}
 
+<div class="container-lg">
     <h1>Édition de {{ nomPrenom }}</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <div class="w-100 p-3">
+    <div class="w-auto p-3">
         <input type="submit" class="btn btn-primary" value="Modifier" />
     </div>
     {{ form_end(form) }}
-
+    </div>
 {% endblock %}
