@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -17,6 +18,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $idUser = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 7,
+        minMessage: 'Cette adresse mail n\'est pas valide.')]
+    #[Assert\Email(
+        message: 'Cette adresse mail n\'est pas une adresse mail valide.',
+    )]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -29,18 +37,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom ne peut pas dépasser {{ limit }} caractères.'
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le prénom ne peut pas dépasser {{ limit }} caractères.'
+    )]
     private ?string $prenom = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\LessThanOrEqual(
+        value: 'today',
+        message: 'La date de naissance ne peut pas être supérieure à la date actuelle.'
+    )]
     private ?\DateTimeInterface $dateNais = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $pseudo = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
+    #[ORM\Column(length: 10, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Regex(
+        pattern: '/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4})$/',
+        message: 'Format de téléphone invalide')]
     private ?string $tel = null;
 
     #[ORM\ManyToOne]
