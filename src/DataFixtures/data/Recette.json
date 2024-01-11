@@ -1,0 +1,110 @@
+[
+  {
+    "nom": "Gâteau au chocolat fondant",
+    "niv_difficulte": "2",
+    "description": "Comment faire un gâteau au chocolat simple, moelleux et fondant ? Je vous propose de tester cette recette ! Les accros au chocolat pourront ajouter un nappage de chocolat ou servir avec un coulis au chocolat.",
+    "nb_personne": "6",
+    "minutes": "40",
+    "heures": "0",
+    "categorie" : 3
+  },
+  {
+    "nom": "Salade de tomates",
+    "niv_difficulte": "1",
+    "description": "Une recette simple de salade de tomates !",
+    "nb_personne": "4",
+    "minutes": "10",
+    "heures": "0",
+    "categorie" : 1
+  },
+  {
+    "nom": "Pizza chorizo",
+    "niv_difficulte": "3",
+    "description": "Besoin d’une recette pas chère pour régaler toute la tribu un soir de semaine ? Pensez pratique, pensez gourmand, pensez pizza avec cette recette à petit budget et facile à préparer !",
+    "nb_personne": "6",
+    "minutes": "50",
+    "heures": "2",
+    "categorie" : 2
+  },
+  {
+    "nom": "Tarte aux Pommes",
+    "niv_difficulte": "3",
+    "description": "Une tarte classique aux pommes avec une croûte croustillante et une garniture fondante.",
+    "nb_personne": "6",
+    "minutes": "40",
+    "heures": "1",
+    "categorie": 3
+  },
+  {
+    "nom": "Bœuf Bourguignon",
+    "niv_difficulte": "5",
+    "description": "Un plat traditionnel français, le bœuf bourguignon est un ragoût de bœuf mijoté lentement dans du vin rouge avec des légumes aromatiques.",
+    "nb_personne": "4",
+    "minutes": "20",
+    "heures": "3",
+    "categorie": 2
+  },
+  {
+    "nom": "Salade César",
+    "niv_difficulte": "1",
+    "description": "Une salade fraîche avec du poulet grillé, des croûtons, du parmesan et une sauce César.",
+    "nb_personne": "2",
+    "minutes": "20",
+    "heures": "0",
+    "categorie": 1
+  },
+  {
+    "nom": "Smoothie Fruits Rouges",
+    "niv_difficulte": "1",
+    "description": "Un délicieux smoothie plein de vitamines, parfait pour une collation saine et rafraîchissante.",
+    "nb_personne": "2",
+    "minutes": "10",
+    "heures": "0",
+    "categorie": 3
+  },
+  {
+    "nom": "Couscous Traditionnel",
+    "niv_difficulte": "4",
+    "description": "Un plat emblématique de la cuisine nord-africaine, le couscous traditionnel est composé de semoule, de légumes et de viande, le tout parfumé avec des épices exquises.",
+    "nb_personne": "4",
+    "minutes": "30",
+    "heures": "2",
+    "categorie": 2
+  },
+  {
+    "nom": "Gratin de Pommes de Terre",
+    "niv_difficulte": "2",
+    "description": "Un délicieux gratin de pommes de terre, crémeux et gratiné au four, parfait en accompagnement ou en plat principal.",
+    "nb_personne": "6",
+    "minutes": "10",
+    "heures": "2",
+    "categorie": 2
+  },
+  {
+    "nom": "Tiramisu",
+    "niv_difficulte": "2",
+    "description": "Un classique italien, le tiramisu est un dessert délicieusement crémeux, composé de couches de biscuits imbibés de café et de crème mascarpone.",
+    "nb_personne": "8",
+    "minutes": "30",
+    "heures": "2",
+    "categorie": 3
+  },
+  {
+    "nom": "Pâtes Carbonara",
+    "niv_difficulte": "2",
+    "description": "Un plat italien classique et délicieux.",
+    "nb_personne": "4",
+    "minutes": "20",
+    "heures": "0",
+    "categorie": 2
+  },
+  {
+    "nom": "Œufs Durs",
+    "niv_difficulte": "1",
+    "description": "Une recette basique pour préparer des œufs durs parfaitement cuits. Idéal pour les salades, les sandwichs ou en tant que collation saine.",
+    "nb_personne": "2",
+    "minutes": "12",
+    "heures": "0",
+    "categorie": 1
+  }
+]
