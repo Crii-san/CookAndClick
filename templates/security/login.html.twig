@@ -32,5 +32,13 @@
             style="background-color: #BAA898; color : black; border: none">
         Se connecter
     </button>
+
+    {% if not app.user %}
+        <div class="mt-3 text-center">
+            <p>Vous n'avez pas encore de compte ?</p>
+            <a href="{{ path('app_user_create') }}" class="btn btn-dark">S'inscrire</a>
+        </div>
+    {% endif %}
+
 </form>
 {% endblock %}
