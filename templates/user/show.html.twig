@@ -4,7 +4,15 @@
 
 {% block body %}
 
-    <h1> {{ user.nom | capitalize}} {{ user.prenom | capitalize}}</h1>
+    <h1> {{ user.nom | capitalize}} {{ user.prenom | capitalize}}
+        <a href="{{ path('app_user_update', {'id': user.idUser}) }}" class="material-symbols-outlined text-warning">
+            edit
+        </a>
+
+        <a href="{{ path('app_user_delete', {'id': user.idUser}) }}" class="material-symbols-outlined text-danger">
+            delete
+        </a>
+    </h1>
 
     <dl>
         <dt> Nom </dt>

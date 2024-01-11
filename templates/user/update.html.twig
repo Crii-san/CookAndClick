@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% set nomPrenom = user.nom | capitalize ~ ' ' ~ user.prenom | capitalize %}
+
+{% block title %}Édition de {{ nomPrenom }}{% endblock %}
+
+{% block body %}
+
+<div class="container-lg">
+    <h1>Édition de {{ nomPrenom }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="w-auto p-3">
+        <input type="submit" class="btn btn-dark" value="Modifier" />
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
