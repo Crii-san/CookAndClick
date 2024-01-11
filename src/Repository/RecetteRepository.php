@@ -22,7 +22,7 @@ class RecetteRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Recette[] Returns an array of Contact objects
+     * @return Recette[] Returns an array of Recette objects
      */
     public function search(string $text = ''): array
     {
