@@ -8,6 +8,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         {% block stylesheets %}
         {% endblock %}
 
@@ -22,6 +23,7 @@
             <a class="navbar-brand" href="{{ path('app_recette')}}">Recettes</a>
             <a class="navbar-brand" href="{{ path('app_allergene')}}">Allergènes</a>
             <a class="navbar-brand" href="{{ path('app_categorie')}}">Catégories</a>
+            <a class="navbar-brand" href="{{ path('app_recette_create')}}">Ajouter une recette</a>
             <form class="d-flex" role="search" lang="fr" action="{{ path('app_recette')}}">
                 <input class="form-control me-2" type="search" placeholder="{{ search|default('') }}" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Recherche</button>
