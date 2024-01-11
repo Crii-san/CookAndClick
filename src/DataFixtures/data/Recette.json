@@ -27,15 +27,6 @@
     "categorie" : 2
   },
   {
-    "nom": "Pizza chorizo",
-    "niv_difficulte": "3",
-    "description": "Besoin d’une recette pas chère pour régaler toute la tribu un soir de semaine ? Pensez pratique, pensez gourmand, pensez pizza avec cette recette à petit budget et facile à préparer !",
-    "nb_personne": "6",
-    "minutes": "50",
-    "heures": "2",
-    "categorie" : 2
-  },
-  {
     "nom": "Tarte aux Pommes",
     "niv_difficulte": "3",
     "description": "Une tarte classique aux pommes avec une croûte croustillante et une garniture fondante.",
