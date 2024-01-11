@@ -22,7 +22,11 @@
             </div>
             <div class="description-row">
                 <dt>Temps de préparation</dt>
-                <dd>{{ recette.heures }}:{{ recette.minutes }}</dd>
+                {% if recette.heures == 0 %}
+                    <dd>{{ recette.minutes }} min</dd>
+                {% else %}
+                    <dd>{{ recette.heures }} H {{ recette.minutes }} min</dd>
+                {% endif %}
             </div>
             <div class="description-row">
                 <dt>Nombre de personnes</dt>
