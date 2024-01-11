@@ -15,8 +15,13 @@ class UserController extends AbstractController
     {
         $utilisateurs = $userRepository->findBy([], ['nom' => 'ASC', 'prenom' => 'ASC']);
 
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
+            return $this->render('error.html.twig', ['error_message' => $error_message]);
+        }
+
         return $this->render('user/index.html.twig', [
-            'utilisateurs' => $utilisateurs,
+        'utilisateurs' => $utilisateurs,
         ]);
     }
 
@@ -27,6 +32,7 @@ class UserController extends AbstractController
 
         if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
             $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
+
             return $this->render('error.html.twig', ['error_message' => $error_message]);
         }
 
