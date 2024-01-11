@@ -31,6 +31,7 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
             EtapeFactory::createOne(
                 ['description' => $description,
                  'numero' => $numero,
+                    'ingredients' => [IngredientFactory::random()],
                     'recette' => $this->recetteRepository->find(3)]);
             ++$numero;
         }
@@ -48,6 +49,7 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
             EtapeFactory::createOne(
                 ['description' => $description,
                     'numero' => $numero,
+                    'ingredients' => [IngredientFactory::random()],
                     'recette' => $this->recetteRepository->find(2)]);
             ++$numero;
         }
@@ -65,6 +67,7 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
             EtapeFactory::createOne(
                 ['description' => $description,
                     'numero' => $numero,
+                    'ingredients' => [IngredientFactory::random()],
                     'recette' => $this->recetteRepository->find(1)]);
             ++$numero;
         }
