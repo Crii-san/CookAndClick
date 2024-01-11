@@ -110,9 +110,11 @@ class RecetteController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/recette/{id}', name: 'app_recette_show')]
-    public function show(Recette $recette): Response
+    public function show(Recette $recette,EtapeRepository $etapeRepository): Response
     {
+        $etapes = $etapeRepository->etapes($recette->getId());
         return $this->render('recette/show.html.twig', [
+            'etapes' => $etapes,
             'recette' => $recette,
         ]);
     }

@@ -55,7 +55,8 @@
         <div class="desc_étapes">
             <h4>Étapes </h4>
             <ol>
-                {% for etape in recette.etapes %}
+                {% for etape in etapes %}
+                    <li>{{ etape.numero }}</li>
                     <li>{{ etape.description }}</li>
                 {% endfor %}
             </ol>
