@@ -21,6 +21,24 @@ class EtapeRepository extends ServiceEntityRepository
         parent::__construct($registry, Etape::class);
     }
 
+    /**
+     * @return Etape[] Returns an array of Etape objects
+     */
+    public function etapes(int $id): array
+    {
+        $qb = $this->createQueryBuilder('etape');
+        $qb->select('etape')
+            ->leftJoin('etape.recette', 'recette')
+            ->where(
+                $qb->expr()->like('recette.id', ':id'),
+            )
+            ->setParameter('id', $id);
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 //    /**
 //     * @return Etape[] Returns an array of Etape objects
 //     */

@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Recette;
 use App\Form\RecetteType;
+use App\Repository\EtapeRepository;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,10 +51,32 @@ class RecetteController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/recette/delete/{id<\d+>}', name: 'app_recette_delete')]
-    public function delete(Recette $recette)
+    public function delete(Recette $recette, Request $request, EntityManagerInterface $entityManager, EtapeRepository $etapeRepository)
     {
+        $form = $this->createFormBuilder($recette)
+            ->add('delete', SubmitType::class, ['label' => 'delete'])
+            ->add('cancel', SubmitType::class, ['label' => 'cancel'])
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            if ($form->get('delete')->isClicked()) {
+                $etapes = $etapeRepository->etapes($recette->getId());
+                foreach ($etapes as $etape) {
+                    $entityManager->remove($etape);
+                }
+                $entityManager->remove($recette);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_recette');
+            } elseif (!$form->get('delete')->isClicked()) {
+                return $this->redirectToRoute('app_recette_show', ['id' => $recette->getId()]);
+            }
+        }
+
         return $this->render('recette/delete.html.twig', parameters: [
             'recette' => $recette,
+            'form' => $form,
         ]);
     }
 
