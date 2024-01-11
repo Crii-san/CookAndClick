@@ -28,7 +28,7 @@ class EtapeController extends AbstractController
             return $this->redirectToRoute('app_etape_createOk');
         }
 
-        return $this->render('recette/create.html.twig', parameters: [
+        return $this->render('etape/create.html.twig', parameters: [
             'etape' => $etape,
             'form' => $form,
         ]);
