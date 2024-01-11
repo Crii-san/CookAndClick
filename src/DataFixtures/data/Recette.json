@@ -5,7 +5,8 @@
     "description": "Comment faire un gâteau au chocolat simple, moelleux et fondant ? Je vous propose de tester cette recette ! Les accros au chocolat pourront ajouter un nappage de chocolat ou servir avec un coulis au chocolat.",
     "nb_personne": "6",
     "minutes": "40",
-    "heures": "0"
+    "heures": "0",
+    "categorie" : 3
   },
   {
     "nom": "Salade de tomates",
@@ -13,7 +14,8 @@
     "description": "Une recette simple de salade de tomates !",
     "nb_personne": "4",
     "minutes": "10",
-    "heures": "0"
+    "heures": "0",
+    "categorie" : 1
   },
   {
     "nom": "Pizza chorizo",
@@ -21,6 +23,7 @@
     "description": "Besoin d’une recette pas chère pour régaler toute la tribu un soir de semaine ? Pensez pratique, pensez gourmand, pensez pizza avec cette recette à petit budget et facile à préparer !",
     "nb_personne": "6",
     "minutes": "50",
-    "heures": "2"
+    "heures": "2",
+    "categorie" : 2
   }
 ]
