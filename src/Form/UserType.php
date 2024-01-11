@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class UserType extends AbstractType
 {
@@ -23,9 +25,11 @@ class UserType extends AbstractType
             'empty_data' => '',
                 ])
             ->add('password', PasswordType::class, [
-                'mapped' => false,
-                'required' => false,
-                ])
+                'required' => true,
+                'empty_data' => '',
+                'constraints' => [
+                    new Assert\NotBlank(['groups' => ['create']]),
+                ]])
             ->add('nom', TextType::class, [
                 'empty_data' => '',
             ])
