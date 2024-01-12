@@ -15,10 +15,10 @@ class Etape
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     private ?int $numero = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 500, nullable: false)]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]
