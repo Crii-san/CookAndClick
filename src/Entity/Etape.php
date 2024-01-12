@@ -6,6 +6,7 @@ use App\Repository\EtapeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EtapeRepository::class)]
 class Etape
@@ -15,10 +16,19 @@ class Etape
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?int $numero = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 500, nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 500,
+        minMessage: 'La description de l`etape doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de l`etape doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]

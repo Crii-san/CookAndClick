@@ -1,12 +1,21 @@
-{% set title = "Nouvelle etape " %}
+{% set title = "Nouvelle etape de :" %}
 
 {% extends 'base.html.twig' %}
 
 {% block body %}
 
-    <h1> {{ title }}</h1>
-    <h4> Votre etape a bien été créée ! </h4>
-
+    <div style="text-align: center;">
+    <h1>
+        {{ title }} {{ recette.nom }}
+    </h1>
+        <h3>
+            Votre etape a bien été créée !
+        </h3>
+            <p>
+                Souhaitez vous ajouter une autre etape a votre recette ?
+            </p>
+        <a href="{{ path('app_etape_create',{id : recette.id}) }}" class="btn btn-dark"> OUI </a> <a href="{{ path('app_recette_show',{id : recette.id}) }}" class="btn btn-primary"> NON </a>
+    </div>
 {% endblock %}
 
 {% block title %}
