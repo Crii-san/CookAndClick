@@ -1,10 +1,10 @@
-{% set title = "Création d'une nouvelle etape " %}
+{% set title = "Création d'une nouvelle etape pour la recette : " %}
 
 {% extends 'base.html.twig' %}
 
 {% block body %}
 
-    <h1> {{ title }}</h1>
+    <h1> {{ title }} {{ recette.nom }}</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <div class="w-100 p-3">
