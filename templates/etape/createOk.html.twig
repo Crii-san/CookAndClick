@@ -4,15 +4,18 @@
 
 {% block body %}
 
-    <h1 style="text-align: center;">
+    <div style="text-align: center;">
+    <h1>
         {{ title }}
     </h1>
-        <h3 class="h3 m-3 font-weight-normal" style="text-align: center;">
+        <h3>
             Votre etape a bien été créée !
         </h3>
-            <p style="text-align: center;">
+            <p>
                 Souhaitez vous ajouter une autre etape a votre recette ?
             </p>
+        <a href="{{ path('app_etape_create') }}" class="btn btn-dark"> OUI </a>
+    </div>
 {% endblock %}
 
 {% block title %}
