@@ -22,12 +22,9 @@ class AllergeneController extends AbstractController
     }
 
     #[Route('/allergene/{id}', name: 'app_allergene_show')]
-    public function show(Allergene $allergene, IngredientRepository $ingredientRepository): Response
+    public function show(Allergene $allergene): Response
     {
-        $ingredients = $ingredientRepository->etapes($allergene->getId());
-
         return $this->render('allergene/show.html.twig', [
-            'ingredients' => $ingredients,
             'allergene' => $allergene,
         ]);
     }
