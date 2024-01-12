@@ -70,7 +70,7 @@ class RecetteController extends AbstractController
 
                 return $this->redirectToRoute('app_recette');
             } elseif (!$form->get('delete')->isClicked()) {
-                return $this->redirectToRoute('app_recette_show', ['id' => $recette->getId()]);
+                return $this->redirectToRoute('app_recette_show', parameters: ['id' => $recette->getId()]);
             }
         }
 
@@ -92,7 +92,7 @@ class RecetteController extends AbstractController
             $entityManager->persist($recette);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_etape_create');
+            return $this->redirectToRoute('app_etape_create', parameters: ['id' => $recette->getId()]);
         }
 
         return $this->render('recette/create.html.twig', parameters: [
@@ -110,9 +110,10 @@ class RecetteController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/recette/{id}', name: 'app_recette_show')]
-    public function show(Recette $recette,EtapeRepository $etapeRepository): Response
+    public function show(Recette $recette, EtapeRepository $etapeRepository): Response
     {
         $etapes = $etapeRepository->etapes($recette->getId());
+
         return $this->render('recette/show.html.twig', [
             'etapes' => $etapes,
             'recette' => $recette,
