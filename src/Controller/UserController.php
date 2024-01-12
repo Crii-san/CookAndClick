@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -31,7 +32,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/update/{id<\d+>}', name: 'app_user_update')]
-    public function update(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    public function update(User $user, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $currentUser = $this->getUser();
         if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
@@ -47,7 +48,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $form->get('password')->getData();
             if ($password) {
-                $hashedPassword = hash('sha512', $password);
+                $hashedPassword = $passwordHasher->hashPassword($user, $password);
                 $user->setPassword($hashedPassword);
             }
 
@@ -64,7 +65,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/create', name: 'app_user_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
 
@@ -74,7 +75,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $form->get('password')->getData();
             if ($password) {
-                $hashedPassword = hash('sha512', $password);
+                $hashedPassword = $passwordHasher->hashPassword($user, $password);
                 $user->setPassword($hashedPassword);
             }
 
