@@ -16,9 +16,11 @@ class Etape
     private ?int $id = null;
 
     #[ORM\Column(nullable: false)]
+    #[Assert\NotBlank]
     private ?int $numero = null;
 
     #[ORM\Column(length: 500, nullable: false)]
+    #[Assert\NotBlank]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]
