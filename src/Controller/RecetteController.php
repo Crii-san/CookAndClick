@@ -92,7 +92,7 @@ class RecetteController extends AbstractController
             $entityManager->persist($recette);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_recette_createOk');
+            return $this->redirectToRoute('app_etape_create');
         }
 
         return $this->render('recette/create.html.twig', parameters: [
