@@ -17,6 +17,7 @@ class Etape
 
     #[ORM\Column(nullable: false)]
     #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?int $numero = null;
 
     #[ORM\Column(length: 500, nullable: false)]
