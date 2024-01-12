@@ -21,6 +21,12 @@ class Etape
 
     #[ORM\Column(length: 500, nullable: false)]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 500,
+        minMessage: 'La description de l`etape doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de l`etape doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'etape')]
