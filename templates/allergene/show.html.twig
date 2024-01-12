@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ allergene.nom }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ allergene.nom }}</h1>
+    <ul>
+        {% for ingredient in allergene.ingredients %}
+            <li><span class="ingredient">{{ ingredient.nom }}</span></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+
