@@ -10,8 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
@@ -109,7 +109,7 @@ class UserController extends AbstractController
                 $entityManager->flush();
 
                 if (!$isAdmin) {
-                    return $this->redirectToRoute('app_logout');
+                    return $this->redirectToRoute('app_user_deleteok');
                 }
 
                 return $this->redirectToRoute('app_user');
@@ -122,6 +122,12 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/user/deleteok', name: 'app_user_deleteok')]
+    public function deleteOk(): Response
+    {
+        return $this->render('user/deleteOk.html.twig');
     }
 
     #[Route('/user/{id}', name: 'app_user_show')]
