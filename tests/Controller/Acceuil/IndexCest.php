@@ -14,6 +14,10 @@ class IndexCest
     // tests
     public function tryToTest(ControllerTester $I)
     {
+        $I->amOnPage('/');
+        $I->seeResponseCodeIs(200);
+        $I->seeInTitle('Cook&Click');
+        $I->see('Les dernières recettes', 'h1');
     }
 
 }
