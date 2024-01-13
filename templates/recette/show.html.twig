@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ recette.nom }} description{% endblock %}
+{% block title %}{{ recette.nom }}{% endblock %}
 
 {% block body %}
 
-    <h2>{{ recette.nom }}
+    <h1>{{ recette.nom }}
     <a href="{{ path('app_recette_update', {'id': recette.id}) }}" class="material-symbols-outlined text-warning">
             edit
         </a>
@@ -12,7 +12,7 @@
         <a href="{{ path('app_recette_delete', {'id': recette.id}) }}" class="material-symbols-outlined text-danger">
             delete
         </a>
-    </h2>
+    </h1>
 
     <div class="description_recette">
         <h4>Description </h4>
