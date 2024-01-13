@@ -2,7 +2,6 @@
 
 namespace App\Tests\Controller\Recette;
 
-use App\Entity\Allergene;
 use App\Factory\AllergeneFactory;
 use App\Factory\CategorieFactory;
 use App\Factory\RecetteFactory;
@@ -39,5 +38,31 @@ class IndexCest
         $I->amOnPage('/recette');
         $I->click('.btn-primary');
         $I->seeCurrentRouteIs('app_recette_show');
+    }
+
+    public function controlSortRecette(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createSequence([
+            ['nom' => 'C', 'categorie' => $categorie],
+            ['nom' => 'Z', 'categorie' => $categorie],
+            ['nom' => 'E', 'categorie' => $categorie],
+            ['nom' => 'O', 'categorie' => $categorie],
+        ]);
+
+        $I->amOnPage('/recette');
+
+        $expected = [
+            'C',
+            'E',
+            'O',
+            'Z',
+        ];
+
+        $I->amOnPage('/recette');
+
+        $listRecette = $I->grabMultiple('.recette-name');
+
+        $I->assertEquals($expected, $listRecette, "L'ordre est incorrect");
     }
 }
