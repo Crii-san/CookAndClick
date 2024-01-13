@@ -1,18 +1,19 @@
 <?php
 
-
 namespace App\Tests\Controller\Categorie;
 
+use App\Factory\CategorieFactory;
+use App\Factory\RecetteFactory;
 use App\Tests\Support\ControllerTester;
 
 class IndexCest
 {
-    public function _before(ControllerTester $I)
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
     {
-    }
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['categorie' => $categorie]);
 
-    // tests
-    public function tryToTest(ControllerTester $I)
-    {
+        $I->amOnPage('/categorie');
+        $I->seeCurrentRouteIs('app_login');
     }
 }
