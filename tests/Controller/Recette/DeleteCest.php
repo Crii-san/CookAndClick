@@ -26,6 +26,16 @@ class DeleteCest
         $I->see('Suppression de la recette : Pâtes au beurre', 'h1');
     }
 
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Pâtes au beurre', 'categorie' => $categorie]);
+
+        $I->amOnPage('/recette/delete/1');
+        $I->seeCurrentRouteIs('app_login');
+    }
+
+
     public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
     {
         $allergene = AllergeneFactory::createOne();
