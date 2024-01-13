@@ -21,4 +21,10 @@ class CreateCest
         $I->seeInTitle("Création d'une nouvelle recette");
         $I->see("Création d'une nouvelle recette", 'h1');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $I->amOnPage('/recette/create');
+        $I->seeCurrentRouteIs('app_login');
+    }
 }
