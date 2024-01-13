@@ -36,4 +36,16 @@ class UpdateCest
         $I->seeCurrentRouteIs('app_login');
     }
 
+    public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Pâtes au beurre', 'categorie' => $categorie]);
+
+        $I->amOnPage('/recette/update/1');
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+    }
 }
