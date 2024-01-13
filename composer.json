@@ -112,7 +112,8 @@
         "start": " lance le server web de test symfony sans restriction de temps d'execution",
         "fix:cs" : "lance la commande de verification du code par PHP CS Fixer",
         "test:cs" : "lance la commande de corretion du code par PHP CS Fixer",
-        "db" : "realise toutes le commandes pour re-générer la base de données compléte"
+        "db" : "realise toutes le commandes pour re-générer la base de données compléte",
+        "test:codeception" : "initialise la base de données de test avant de lancer les tests"
     },
         "conflict": {
         "symfony/symfony": "*"
