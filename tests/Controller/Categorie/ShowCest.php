@@ -23,4 +23,18 @@ class ShowCest
         $I->seeInTitle('Les entrées');
         $I->see('Les entrées', 'h1');
     }
+
+    public function clickFirstLink(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Test', 'categorie' => $categorie]);
+
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        $I->amOnPage('/categorie/1');
+        $I->click('.btn-primary');
+        $I->seeCurrentRouteIs('app_recette_show');
+    }
 }
