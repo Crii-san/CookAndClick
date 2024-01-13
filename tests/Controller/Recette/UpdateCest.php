@@ -27,5 +27,13 @@ class UpdateCest
         $I->see('Édition  de la recette : Pâtes au beurre', 'h1');
     }
 
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Pâtes au beurre', 'categorie' => $categorie]);
+
+        $I->amOnPage('/recette/update/1');
+        $I->seeCurrentRouteIs('app_login');
+    }
 
 }
