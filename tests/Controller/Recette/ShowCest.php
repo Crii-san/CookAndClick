@@ -16,5 +16,9 @@ class ShowCest
     // tests
     public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
     {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['categorie' => $categorie]);
+        $I->amOnPage('/recette/1');
+        $I->seeCurrentRouteIs('app_login');
     }
 }
