@@ -3,8 +3,10 @@
 
 namespace App\Tests\Controller\Acceuil;
 
+use App\Factory\AllergeneFactory;
 use App\Factory\CategorieFactory;
 use App\Factory\RecetteFactory;
+use App\Factory\UserFactory;
 use App\Tests\Support\ControllerTester;
 
 class IndexCest
@@ -36,5 +38,20 @@ class IndexCest
         $I->amOnPage('/recette?search='.$chercheCaractere);
         $I->see('Fondant au chocolat');
         $I->see('Chocolat chaud');
+    }
+
+    public function clickFirstLink(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Pâtes au beurre', 'categorie' => $categorie]);
+
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        // test
+        $I->amOnPage('/recette');
+        $I->click('.btn-primary');
+        $I->seeCurrentRouteIs('app_recette_show');
     }
 }
