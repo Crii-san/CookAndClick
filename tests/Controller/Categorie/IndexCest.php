@@ -31,4 +31,16 @@ class IndexCest
         $I->seeCurrentRouteIs('app_login');
     }
 
+    /*
+    public function clickFirstLink(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        $I->amOnPage('/categorie');
+        $I->click('.btn-primary.m-3.w-100.p-3');
+        $I->seeCurrentRouteIs('recette_categorie');
+    }
+    */
 }
