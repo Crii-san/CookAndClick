@@ -33,14 +33,13 @@ class EtapeController extends AbstractController
             $entityManager->persist($etape);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_etape_createOk', parameters: ['id' => $recette->getId()]);
+            return $this->redirectToRoute('app_ingredient_add', parameters: ['id' => $recette->getId(), 'id2' => $etape->getId()]);
         }
 
         return $this->render('etape/create.html.twig', parameters: [
             'etape' => $etape,
             'form' => $form,
             'recette' => $recette,
-            'form2'=> $form2,
         ]);
     }
 
