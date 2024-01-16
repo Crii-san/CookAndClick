@@ -20,15 +20,17 @@ class UserController extends AbstractController
     {
         $utilisateurs = $userRepository->findBy([], ['nom' => 'ASC', 'prenom' => 'ASC']);
 
-        if (!$this->isGranted('ROLE_ADMIN')) {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->render('user/index.html.twig', [
+                'utilisateurs' => $utilisateurs,
+            ]);
+        } elseif ($this->isGranted('ROLE_USER')) {
             $error_message = 'Vous n\'avez pas la permission d\'accéder à cette page.';
 
             return $this->render('error.html.twig', ['error_message' => $error_message]);
+        } else {
+            return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('user/index.html.twig', [
-        'utilisateurs' => $utilisateurs,
-        ]);
     }
 
     #[Route('/user/update/{id<\d+>}', name: 'app_user_update')]
