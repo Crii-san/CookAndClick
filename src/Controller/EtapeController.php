@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Etape;
+use App\Entity\Ingredient;
 use App\Entity\Recette;
 use App\Form\EtapeType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,21 +20,25 @@ class EtapeController extends AbstractController
     public function create(Recette $recette, Request $request, EntityManagerInterface $entityManager)
     {
         $etape = new Etape();
+
+        $ingredient = new Ingredient();
+        $etape->addIngredient($ingredient);
+
         $form = $this->createForm(EtapeType::class, $etape);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($ingredient);
             $entityManager->persist($etape);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_etape_createOk', parameters: ['id' => $recette->getId()]);
         }
 
-
         return $this->render('etape/create.html.twig', parameters: [
             'etape' => $etape,
             'form' => $form,
-            'recette'=>$recette,
+            'recette' => $recette,
         ]);
     }
 
@@ -41,8 +46,8 @@ class EtapeController extends AbstractController
     #[Route('/etape/createOk/{id<\d+>}', name: 'app_etape_createOk')]
     public function createOk(Recette $recette): Response
     {
-        return $this->render('etape/createOk.html.twig',parameters: [
-        'recette'=>$recette,
+        return $this->render('etape/createOk.html.twig', parameters: [
+        'recette' => $recette,
     ]);
     }
 }
