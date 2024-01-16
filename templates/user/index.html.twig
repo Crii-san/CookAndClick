@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateurs{% endblock %}
+{% block title %}Tous les utilisateurs{% endblock %}
 
 {% block body %}
-    <h1> Liste des Utilisateurs </h1>
+    <h1>Tous les utilisateurs</h1>
     <ul>
         {% for utilisateur in utilisateurs %}
             <li><a href="{{ path('app_user_show', {id: utilisateur.idUser}) }}" class="utilisateurs"><span class="utilisateur">{{ utilisateur.nom | capitalize}} {{ utilisateur.prenom | capitalize}}</span></a></li>
