@@ -35,4 +35,16 @@ class IndexCest
         $I->amOnPage('/user');
         $I->seeCurrentRouteIs('app_login');
     }
+
+    public function clickFirstLink(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_ADMIN'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        // test
+        $I->amOnPage('/user');
+        $I->click('.utilisateurs');
+        $I->seeCurrentRouteIs('app_user_show');
+    }
 }
