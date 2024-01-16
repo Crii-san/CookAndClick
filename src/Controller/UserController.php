@@ -36,6 +36,10 @@ class UserController extends AbstractController
     #[Route('/user/update/{id<\d+>}', name: 'app_user_update')]
     public function update(User $user, Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $currentUser = $this->getUser();
         if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
             $error_message = 'Vous n\'avez pas la permission de modifier cet utilisateur.';
