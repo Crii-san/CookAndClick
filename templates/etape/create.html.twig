@@ -6,6 +6,10 @@
 
     <h1> {{ title }} {{ recette.nom }}</h1>
     {{ form_start(form) }}
+    {{ form_row(form.numero) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.recette) }}
+    {{ form_row(form.ingredients) }}
     {{ form_widget(form) }}
     <div class="w-100 p-3">
         <input type="submit" class="btn btn-dark" value="Ajouter" />
