@@ -44,4 +44,18 @@ class UpdateCest
         $I->amOnPage('/user/update/2');
         $I->see('Vous n\'avez pas la permission de modifier cet utilisateur.', 'p');
     }
+
+    public function accessIsRestrictedToCorrespondingUser(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        UserFactory::createMany(4);
+
+        // Utilisateur numéro 5
+        $user = UserFactory::createOne(['allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        // L'utilisateur numéro 5 connecté veut accéder à la page de modification de l'utilisateur numéro 1
+        $I->amOnPage('/user/update/1');
+        $I->see('Vous n\'avez pas la permission de modifier cet utilisateur.', 'p');
+    }
 }
