@@ -33,4 +33,16 @@ class ShowCest
         $I->seeCurrentRouteIs('app_login');
     }
 
+    public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        UserFactory::createOne(['allergene' => $allergene]);
+
+        $I->amOnPage('/user/2');
+        $I->see('Vous n\'avez pas la permission d\'accéder à cette page.', 'p');
+    }
+
 }
