@@ -23,7 +23,7 @@ class IngredientController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/etape/add/{id<\d+>}/{id<\d+>}', name: 'app_ingredient_add')]
+    #[Route('/etape/add/{id<\d+>}/{id2<\d+>}', name: 'app_ingredient_add')]
     public function add(Recette $recette, Etape $etape, Request $request, EntityManagerInterface $entityManager)
     {
         $form = $this->createForm(IngredientListType::class);
@@ -36,7 +36,7 @@ class IngredientController extends AbstractController
             return $this->redirectToRoute('app_etape_create', parameters: ['id' => $recette->getId()]);
         }
 
-        return $this->render('recette/create.html.twig', parameters: [
+        return $this->render('ingredient/add.html.twig', parameters: [
             'recette' => $recette,
             'form' => $form,
         ]);
