@@ -29,6 +29,9 @@ class Ingredient
     #[ORM\Column]
     #[Assert\NotBlank]
     #[Assert\Positive]
+    #[Assert\LessThanOrEqual(
+        value: 10000,
+    )]
     private ?int $calories = null;
 
     #[ORM\Column(length: 50)]
