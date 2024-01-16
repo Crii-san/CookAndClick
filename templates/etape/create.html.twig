@@ -10,14 +10,11 @@
     {{ form_row(form.description) }}
     {{ form_row(form.recette) }}
     {{ form_row(form.ingredients) }}
-    {{ form_widget(form) }}
     <div class="w-100 p-3">
         <input type="submit" class="btn btn-dark" value="Ajouter" />
     </div>
     {{ form_end(form) }}
-    {{ form_start(form2) }}
-    {{ form_widget(form2) }}
-    {{ form_end(form2) }}
+
 
 {% endblock %}
 
