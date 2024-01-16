@@ -18,6 +18,12 @@ class Ingredient
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'Le nom de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $nom = null;
 
     #[ORM\Column]
@@ -26,10 +32,22 @@ class Ingredient
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 1,
+        max: 2,
+        minMessage: 'L`unité de mesure de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'L`unité de mesure de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $uniteMesure = null;
 
     #[ORM\Column(length: 500)]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 500,
+        minMessage: 'La description de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Allergene::class, inversedBy: 'ingredient')]
