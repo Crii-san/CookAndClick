@@ -28,6 +28,7 @@ class Ingredient
 
     #[ORM\Column]
     #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?int $calories = null;
 
     #[ORM\Column(length: 50)]
