@@ -139,6 +139,10 @@ class UserController extends AbstractController
     #[Route('/user/{id}', name: 'app_user_show')]
     public function show(User $user): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $currentUser = $this->getUser();
 
         if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
