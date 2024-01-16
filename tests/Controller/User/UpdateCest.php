@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\User;
 
 use App\Factory\AllergeneFactory;
@@ -22,5 +21,18 @@ class UpdateCest
 
         $I->seeInTitle('Uzumaki Naruto');
         $I->see('Édition de Uzumaki Naruto', 'h1');
+    }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        UserFactory::createOne(['nom' => 'Uzumaki', 'prenom' => 'Naruto', 'allergene' => $allergene]);
+
+        $I->amOnPage('/user/update/1');
+        $I->seeCurrentRouteIs('app_login');
+    }
+
+    public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
+    {
     }
 }
