@@ -28,7 +28,7 @@ class Ingredient
 
     #[ORM\Column]
     #[Assert\NotBlank]
-    #[Assert\Positive]
+    #[Assert\PositiveOrZero]
     #[Assert\LessThanOrEqual(
         value: 10000,
     )]
