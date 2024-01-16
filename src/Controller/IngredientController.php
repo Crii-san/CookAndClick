@@ -23,7 +23,7 @@ class IngredientController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/etape/add/{id<\d+>}/{id<\d+>}', name: 'app_recette_create')]
+    #[Route('/etape/add/{id<\d+>}/{id<\d+>}', name: 'app_ingredient_add')]
     public function add(Recette $recette, Etape $etape, Request $request, EntityManagerInterface $entityManager)
     {
         $form = $this->createForm(IngredientListType::class);
