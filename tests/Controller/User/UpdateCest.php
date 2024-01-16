@@ -34,5 +34,14 @@ class UpdateCest
 
     public function accessIsRestrictedToAdminUsers(ControllerTester $I): void
     {
+        $allergene = AllergeneFactory::createOne();
+
+        $user = UserFactory::createOne(['allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        UserFactory::createOne(['allergene' => $allergene]);
+
+        $I->amOnPage('/user/update/2');
+        $I->see('Vous n\'avez pas la permission de modifier cet utilisateur.', 'p');
     }
 }
