@@ -1,6 +1,6 @@
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 100vw; align-items: stretch;">
     {% for recette in recettes %}
-        <div style="display: flex; align-items: center; margin : 10px">
+        <div class=recette style="display: flex; align-items: center; margin : 10px">
             <a class="btn btn-primary" href="{{ path('app_recette_show', {id: recette.id}) }}"
                style="width: 150px; height: 100px; display: flex; flex-direction: column; justify-content: center; background-color: #BAA898; border: none; color:black;">
                 <span class="recette-name">{{ recette.nom }}</span>
