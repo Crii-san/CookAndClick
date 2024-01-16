@@ -45,4 +45,17 @@ class ShowCest
         $I->see('Vous n\'avez pas la permission d\'accéder à cette page.', 'p');
     }
 
+    public function accessIsRestrictedToCorrespondingUser(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        UserFactory::createMany(4);
+
+        // Utilisateur numéro 5
+        $user = UserFactory::createOne(['allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        // L'utilisateur numéro 5 connecté veut accéder à la page détail de l'utilisateur numéro 1
+        $I->amOnPage('/user/1');
+        $I->see('Vous n\'avez pas la permission d\'accéder à cette page.', 'p');
+    }
 }
