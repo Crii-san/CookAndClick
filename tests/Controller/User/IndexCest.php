@@ -47,4 +47,31 @@ class IndexCest
         $I->click('.utilisateurs');
         $I->seeCurrentRouteIs('app_user_show');
     }
+
+    public function controlSortUser(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        UserFactory::createSequence([
+            ['nom' => 'C', 'prenom' => 'Jean', 'allergene' => $allergene],
+            ['nom' => 'Z', 'prenom' => 'Jean', 'allergene' => $allergene],
+            ['nom' => 'E', 'prenom' => 'Bjean', 'allergene' => $allergene],
+            ['nom' => 'E', 'prenom' => 'Ajean', 'allergene' => $allergene],
+        ]);
+
+        $expected = [
+            'C Jean',
+            'E Ajean',
+            'E Bjean',
+            'Z Jean',
+            'Z Z',
+        ];
+
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['nom' => 'Z', 'prenom' => 'Z', 'roles' => ['ROLE_ADMIN'], 'allergene' => $allergene]);
+
+        $I->amLoggedInAs($user->object());
+        $I->amOnPage('/user');
+        $listUser = $I->grabMultiple('.utilisateur');
+        $I->assertEquals($expected, $listUser, "L'ordre est incorrect");
+    }
 }
