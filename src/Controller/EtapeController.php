@@ -6,6 +6,7 @@ use App\Entity\Etape;
 use App\Entity\Ingredient;
 use App\Entity\Recette;
 use App\Form\EtapeType;
+use App\Form\IngredientListType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,7 @@ class EtapeController extends AbstractController
         $etape->addIngredient($ingredient);
 
         $form = $this->createForm(EtapeType::class, $etape);
-
+        $form2 = $this->createForm(IngredientListType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($ingredient);
@@ -39,6 +40,7 @@ class EtapeController extends AbstractController
             'etape' => $etape,
             'form' => $form,
             'recette' => $recette,
+            'form2'=> $form2,
         ]);
     }
 
