@@ -17,4 +17,10 @@ class IndexCest
         $I->amOnPage('/user');
         $I->see('Vous n\'avez pas la permission d\'accéder à cette page.', 'p');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $I->amOnPage('/user');
+        $I->seeCurrentRouteIs('app_login');
+    }
 }
