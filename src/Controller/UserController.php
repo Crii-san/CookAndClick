@@ -100,6 +100,17 @@ class UserController extends AbstractController
     #[Route('/user/delete/{id<\d+>}', name: 'app_user_delete')]
     public function delete(User $user, Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $currentUser = $this->getUser();
+        if ($currentUser->getIdUser() !== $user->getIdUser() && !$this->isGranted('ROLE_ADMIN')) {
+            $error_message = 'Vous n\'avez pas la permission de supprimer cet utilisateur.';
+
+            return $this->render('error.html.twig', ['error_message' => $error_message]);
+        }
+
         $form = $this->createFormBuilder($user)
             ->add('delete', SubmitType::class, ['label' => 'delete'])
             ->add('cancel', SubmitType::class, ['label' => 'cancel'])
