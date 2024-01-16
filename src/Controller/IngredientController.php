@@ -39,6 +39,7 @@ class IngredientController extends AbstractController
         return $this->render('ingredient/add.html.twig', parameters: [
             'recette' => $recette,
             'form' => $form,
+            'etape' => $etape,
         ]);
     }
 }
