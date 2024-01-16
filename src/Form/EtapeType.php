@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Etape;
-use App\Entity\Ingredient;
 use App\Entity\Recette;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
