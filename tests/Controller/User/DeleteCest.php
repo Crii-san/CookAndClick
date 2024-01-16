@@ -24,5 +24,13 @@ class DeleteCest
         $I->see('Suppression de Uzumaki Naruto', 'h1');
     }
 
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $allergene = AllergeneFactory::createOne();
+        UserFactory::createOne(['nom' => 'Uzumaki', 'prenom' => 'Naruto', 'allergene' => $allergene]);
+
+        $I->amOnPage('/user/delete/1');
+        $I->seeCurrentRouteIs('app_login');
+    }
 
 }
