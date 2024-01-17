@@ -22,9 +22,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ path('app_recette')}}">Recettes</a>
             <a class="navbar-brand" href="{{ path('app_allergene')}}">Allergènes</a>
-            <a class="navbar-brand" href="{{ path('app_categorie')}}">Catégories</a>
-            <a class="navbar-brand" href="{{ path('app_recette_create')}}">Ajouter une recette</a>
-
+            {% if app.user %}
+                <a class="navbar-brand" href="{{ path('app_categorie')}}">Catégories</a>
+                <a class="navbar-brand" href="{{ path('app_recette_create')}}">Ajouter une recette</a>
+            {% endif %}
             <form class="d-flex align-items-center" role="search" lang="fr" action="{{ path('app_recette')}}">
                 <input class="form-control me-2" type="search" placeholder="{{ search|default('') }}" aria-label="Search" name="search">
                 <button class="btn btn-dark" type="submit"><span class="material-symbols-outlined">Search</span></button>
