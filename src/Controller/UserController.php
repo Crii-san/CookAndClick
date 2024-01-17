@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserController extends AbstractController
 {
@@ -98,7 +99,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/delete/{id<\d+>}', name: 'app_user_delete')]
-    public function delete(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    public function delete(User $user, Request $request, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('app_login');
@@ -120,16 +121,18 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('delete')->isClicked()) {
+
+                $tokenStorage->setToken(null);
+
                 $isAdmin = in_array('ROLE_ADMIN', $user->getRoles(), true);
 
                 $entityManager->remove($user);
                 $entityManager->flush();
 
                 if (!$isAdmin) {
-                    return $this->redirectToRoute('app_user_deleteok');
+                    return $this->redirectToRoute('app_accueil');
                 }
 
-                return $this->redirectToRoute('app_user');
             } elseif (!$form->get('delete')->isClicked()) {
                 return $this->redirectToRoute('app_user_show', ['id' => $user->getIdUser()]);
             }
@@ -139,12 +142,6 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
-    }
-
-    #[Route('/user/deleteok', name: 'app_user_deleteok')]
-    public function deleteOk(): Response
-    {
-        return $this->render('user/deleteOk.html.twig');
     }
 
     #[Route('/user/{id}', name: 'app_user_show')]
