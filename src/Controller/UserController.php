@@ -145,12 +145,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/deleteok', name: 'app_user_deleteok')]
-    public function deleteOk(): Response
-    {
-        return $this->render('user/deleteOk.html.twig');
-    }
-
     #[Route('/user/{id}', name: 'app_user_show')]
     public function show(User $user): Response
     {
