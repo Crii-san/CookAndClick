@@ -133,7 +133,6 @@ class UserController extends AbstractController
                     return $this->redirectToRoute('app_accueil');
                 }
 
-                return $this->redirectToRoute('app_user');
             } elseif (!$form->get('delete')->isClicked()) {
                 return $this->redirectToRoute('app_user_show', ['id' => $user->getIdUser()]);
             }
