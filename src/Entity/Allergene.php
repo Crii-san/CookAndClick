@@ -21,7 +21,7 @@ class Allergene
     #[ORM\Column(length: 500)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Ingredient::class, mappedBy: 'allergene')]
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, mappedBy: 'allergenes')]
     private Collection $ingredients;
 
     public function __construct()

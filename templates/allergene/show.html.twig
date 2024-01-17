@@ -5,11 +5,15 @@
 {% block body %}
 
     <h1>{{ allergene.nom }}</h1>
-    <ul>
-        {% for ingredient in allergene.ingredients %}
-            <li><span class="ingredient">{{ ingredient.nom }}</span></li>
-        {% endfor %}
-    </ul>
+    {% if allergene.ingredients is not empty %}
+        <ul>
+            {% for ingredient in allergene.ingredients %}
+                <li><span class="ingredient">{{ ingredient.nom }}</span></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun ingrédient associé à cet allergène.</p>
+    {% endif %}
 
 {% endblock %}
 
