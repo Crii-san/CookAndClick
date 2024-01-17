@@ -31,11 +31,15 @@ class IngredientController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $ingredientList =$_POST["ingredient_list"]["ingredient"];
+            $ingredientList = $_POST['ingredient_list']['ingredient'];
             $ingredients = $ingredientRepository->search($ingredientList);
-            foreach ($ingredients as $ingredient)
-            $etape->addIngredient($ingredients);
-            $entityManager->flush();
+            foreach ($ingredients as $ingredient) {
+                $ingredient->addEtape($etape);
+                $entityManager->persist($ingredient);
+                $entityManager->persist($etape);
+                $entityManager->flush();
+
+            }
 
             return $this->redirectToRoute('app_etape_createOk', parameters: ['id' => $recette->getId()]);
         }
