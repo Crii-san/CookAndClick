@@ -1,0 +1,21 @@
+{% set title = "Ajout d'ingredients a l'etape " %}
+{% set title2 = " de la recette: " %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> {{ title }} {{ etape.numero }} {{ title2 }} {{ recette.nom }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="w-100 p-3">
+        <input type="submit" class="btn btn-dark" value="Ajouter" />
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+{% block title %}
+    {{ title }} {{ title }} {{ etape.numero }} {{ title2 }} {{ recette.nom }}
+{% endblock %}
