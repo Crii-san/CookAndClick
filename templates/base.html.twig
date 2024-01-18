@@ -6,13 +6,12 @@
 
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('/img/favicon.ico') }}" type="image/x-icon">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         {% block stylesheets %}
         {% endblock %}
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         {% block javascripts %}
         {% endblock %}
     </head>
@@ -48,7 +47,7 @@
 
     <div  class="en-tete">
         <h1 class="logo"><a href="{{ path('app_accueil')}}">Cook&Click</a></h1>
-        <h1 class="logo2"><a href="{{ path('app_accueil')}}">Cook&Click</a></h1>
+        <h2 class="logo2"><a href="{{ path('app_accueil')}}">Cook&Click</a></h2>
     </div >
 
     <div class="menu">
@@ -59,16 +58,16 @@
 
     {% block body %}{% endblock %}
 
-    <footer class="footer">
-        <a href="#">À PROPOS</a>
-        <a href="#">CONTACT</a>
-        <a href="#">NEWSLETTER</a>
-        <a href="#">MENTIONS LÉGALES</a>
-        <a href="#">RECRUTEMENT</a>
-        <a href="#">CGU</a>
-        <a href="#">PROTECTION DES DONNÉES PERSONNELLES</a>
-        <a href="#">COOKIES</a>
-        <p>Tous droits réservés cookandclick.fr - 2023-2024</p>
+    <footer id="footer" class="bg-dark text-white text-center py-3 text-white mx-2">
+        <a href="#" class="text-white mx-2">À PROPOS</a>
+        <a href="#" class="text-white mx-2">CONTACT</a>
+        <a href="#" class="text-white mx-2">NEWSLETTER</a>
+        <a href="#" class="text-white mx-2">MENTIONS LÉGALES</a>
+        <a href="#" class="text-white mx-2">RECRUTEMENT</a>
+        <a href="#" class="text-white mx-2">CGU</a>
+        <a href="#" class="text-white mx-2">PROTECTION DES DONNÉES PERSONNELLES</a>
+        <a href="#" class="text-white mx-2">COOKIES</a>
+        <p class="mt-3">Tous droits réservés cookandclick.fr - 2023-2024</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
