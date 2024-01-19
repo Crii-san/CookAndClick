@@ -4,16 +4,22 @@
 
 {% block body %}
 
-    <h1>Tous les allergènes</h1>
-    <ul>
-        {% for allergene in Allergenes %}
-            <li>
-               <a href="{{ path('app_allergene_show', {id: allergene.id}) }}"><span class="allergene">{{ allergene.nom }}</span></a>
-                <ul>
-                    <li><span class="description">{{ allergene.description}}</span></li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container mb-4">
+        <h1>Tous les allergènes</h1>
+        <ul class="list-group">
+            {% for allergene in Allergenes %}
+                <li class="list-group-item">
+                    <a href="{{ path('app_allergene_show', {id: allergene.id}) }}" class="text-decoration-none">
+                        <span class="allergene">{{ allergene.nom }}</span>
+                    </a>
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <span class="description">{{ allergene.description }}</span>
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}
