@@ -29,7 +29,7 @@
                         {% if recette.heures == 0 %}
                             {{ recette.minutes }} min
                         {% else %}
-                            {{ recette.heures }} H {{ recette.minutes }} min
+                            {{ recette.heures }} h {{ recette.minutes }} min
                         {% endif %}
                     </dd>
                 </div>
@@ -47,16 +47,16 @@
         <div>
             <div class="col-md-6 desc_ingrédients">
                 <h4>Ingrédients</h4>
-                <ul>
+                <ul class="list-group">
                     {% for etape in recette.etapes %}
                         {% for ingredient in etape.ingredients %}
-                            <li>{{ ingredient.nom }}</li>
+                            <li class="list-group-item">{{ ingredient.nom }}</li>
                         {% endfor %}
                     {% endfor %}
                 </ul>
             </div>
 
-            <div class="desc_étapes">
+            <div class=" mt-4">
                 <h4>Étapes</h4>
                 <ol>
                     {% for etape in etapes %}
