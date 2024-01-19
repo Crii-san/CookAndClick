@@ -25,4 +25,13 @@ class CreateOKCest
         $I->seeInTitle('Fondant au chocolat');
         $I->see('Nouvelle étape pour la recette : Fondant au chocolat', 'h1');
     }
+
+    public function accessIsRestrictedToAuthenticatedUsers(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['categorie' => $categorie]);
+
+        $I->amOnPage('/etape/createOk/1');
+        $I->seeCurrentRouteIs('app_login');
+    }
 }
