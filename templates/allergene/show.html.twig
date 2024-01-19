@@ -4,18 +4,19 @@
 
 {% block body %}
 
-    <h1>{{ allergene.nom }}</h1>
-    {% if allergene.ingredients is not empty %}
-        <ul>
-            {% for ingredient in allergene.ingredients %}
-                <li><span class="ingredient">{{ ingredient.nom }}</span></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Aucun ingrédient associé à cet allergène.</p>
-    {% endif %}
+    <div class="container mb-4">
+        <h1>{{ allergene.nom }}</h1>
+        {% if allergene.ingredients is not empty %}
+            <ul class="list-group">
+                {% for ingredient in allergene.ingredients %}
+                    <li class="list-group-item">
+                        <span class="ingredient">{{ ingredient.nom }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="mt-3">Aucun ingrédient associé à cet allergène.</p>
+        {% endif %}
+    </div>
 
 {% endblock %}
-
-
-
