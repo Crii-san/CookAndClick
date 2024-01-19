@@ -34,4 +34,18 @@ class CreateOKCest
         $I->amOnPage('/etape/createOk/1');
         $I->seeCurrentRouteIs('app_login');
     }
+
+    public function clickOnYesButton(ControllerTester $I): void
+    {
+        $categorie = CategorieFactory::createOne();
+        RecetteFactory::createOne(['nom' => 'Fondant au chocolat', 'categorie' => $categorie]);
+
+        $allergene = AllergeneFactory::createOne();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER'], 'allergene' => $allergene]);
+        $I->amLoggedInAs($user->object());
+
+        $I->amOnPage('/etape/createOk/1');
+        $I->click('.oui');
+        $I->seeCurrentRouteIs('app_etape_create');
+    }
 }
