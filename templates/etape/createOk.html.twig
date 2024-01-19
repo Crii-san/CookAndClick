@@ -15,8 +15,8 @@
             <p>
                 Souhaitez-vous ajouter une autre étape à votre recette ?
             </p>
-        <a href="{{ path('app_etape_create',{id : recette.id}) }}" class="btn btn-dark"> OUI </a>
-        <a href="{{ path('app_recette_show',{id : recette.id}) }}" class="btn btn-primary"> NON </a>
+        <a href="{{ path('app_etape_create',{id : recette.id}) }}" class="oui btn btn-dark"> OUI </a>
+        <a href="{{ path('app_recette_show',{id : recette.id}) }}" class="non btn btn-primary"> NON </a>
     </div>
 {% endblock %}
 
