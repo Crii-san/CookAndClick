@@ -4,65 +4,67 @@
 
 {% block body %}
 
-    <h1>{{ recette.nom }}
-    <a href="{{ path('app_recette_update', {'id': recette.id}) }}" class="material-symbols-outlined text-warning">
-            edit
-        </a>
+    <div class="container mt-4">
+        <h1>{{ recette.nom }}
+            <a href="{{ path('app_recette_update', {'id': recette.id}) }}" class="material-symbols-outlined text-warning">
+                edit
+            </a>
 
-        <a href="{{ path('app_recette_delete', {'id': recette.id}) }}" class="material-symbols-outlined text-danger">
-            delete
-        </a>
-    </h1>
+            <a href="{{ path('app_recette_delete', {'id': recette.id}) }}" class="material-symbols-outlined text-danger">
+                delete
+            </a>
+        </h1>
 
-    <div class="description_recette">
-        <h4>Description </h4>
-        <dl>
-            <div class="description-row">
-                <dt>Catégorie</dt>
-                <dd>{{ recette.categorie.nom }}</dd>
-            </div>
-            <div class="description-row">
-                <dt>Temps de préparation</dt>
-                {% if recette.heures == 0 %}
-                    <dd>{{ recette.minutes }} min</dd>
-                {% else %}
-                    <dd>{{ recette.heures }} H {{ recette.minutes }} min</dd>
-                {% endif %}
-            </div>
-            <div class="description-row">
-                <dt>Nombre de personnes</dt>
-                <dd>{{ recette.nbPersonne }}</dd>
-            </div>
-            <div class="description-row">
-                <dt>Difficulté</dt>
-                <dd>{{ recette.nivDifficulte }}/5</dd>
-            </div>
-        </dl>
-    </div>
-
-   <p>{{ recette.description }}</p>
-
-    <div class="conteneur">
-        <div class="desc_ingrédients">
-            <h4>Ingrédients </h4>
-            <ul>
-                {% for etape in recette.etapes %}
-                    {% for ingredient in etape.ingredients %}
-                        <li>{{ ingredient.nom }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
+        <div class="description_recette">
+            <h4>Description</h4>
+            <p>{{ recette.description }}</p>
+            <dl class="row">
+                <div class="description-row col-md-6">
+                    <dt>Catégorie</dt>
+                    <dd>{{ recette.categorie.nom }}</dd>
+                </div>
+                <div class="description-row col-md-6">
+                    <dt>Temps de préparation</dt>
+                    <dd>
+                        {% if recette.heures == 0 %}
+                            {{ recette.minutes }} min
+                        {% else %}
+                            {{ recette.heures }} H {{ recette.minutes }} min
+                        {% endif %}
+                    </dd>
+                </div>
+                <div class="description-row col-md-6">
+                    <dt>Nombre de personnes</dt>
+                    <dd>{{ recette.nbPersonne }}</dd>
+                </div>
+                <div class="description-row col-md-6">
+                    <dt>Difficulté</dt>
+                    <dd>{{ recette.nivDifficulte }}/5</dd>
+                </div>
+            </dl>
         </div>
 
-        <div class="desc_étapes">
-            <h4>Étapes </h4>
-            <ol>
-                {% for etape in etapes %}
-                    <li>{{ etape.description }}</li>
-                {% endfor %}
-            </ol>
+        <div>
+            <div class="col-md-6 desc_ingrédients">
+                <h4>Ingrédients</h4>
+                <ul>
+                    {% for etape in recette.etapes %}
+                        {% for ingredient in etape.ingredients %}
+                            <li>{{ ingredient.nom }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="desc_étapes">
+                <h4>Étapes</h4>
+                <ol>
+                    {% for etape in etapes %}
+                        <li>{{ etape.description }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
         </div>
     </div>
 
 {% endblock %}
-
