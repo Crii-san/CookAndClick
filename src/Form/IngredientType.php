@@ -2,35 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Etape;
-use App\Entity\Recette;
+use App\Entity\Allergene;
+use App\Entity\Ingredient;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EtapeType extends AbstractType
+class IngredientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numero')
+            ->add('nom')
+            ->add('calories')
+            ->add('uniteMesure')
             ->add('description')
-            ->add('ingredients', CollectionType::class, [
-                'entry_type' => IngredientType::class,
-            ])
-            ->add('recette', EntityType::class, [
-                'class' => recette::class,
-                'choice_label' => 'nom',
-            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Etape::class,
+            'data_class' => Ingredient::class,
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Repository\IngredientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: IngredientRepository::class)]
 class Ingredient
@@ -16,15 +17,41 @@ class Ingredient
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'Le nom de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $nom = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\PositiveOrZero]
+    #[Assert\LessThanOrEqual(
+        value: 10000,
+    )]
     private ?int $calories = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 1,
+        max: 2,
+        minMessage: 'L`unité de mesure de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'L`unité de mesure de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $uniteMesure = null;
 
     #[ORM\Column(length: 500)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 500,
+        minMessage: 'La description de l`ingredient doit faire au minimum {{ limit }} caractères',
+        maxMessage: 'La description de l`ingredient doit faire au maximum {{ limit }} caractères',
+    )]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Allergene::class, inversedBy: 'ingredient')]
