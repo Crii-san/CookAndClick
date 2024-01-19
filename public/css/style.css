@@ -1,13 +1,18 @@
 @import url('https://fonts.cdnfonts.com/css/white-star-free');
 @import url('https://fonts.cdnfonts.com/css/garet');
 
-h1, h2, h4, ul, dl, p {
-    margin: 15px;
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
 .logo {
     font-family: 'White Star free', sans-serif;
     font-size: 40px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .logo2 {
@@ -15,6 +20,7 @@ h1, h2, h4, ul, dl, p {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
+    margin-top: 1px;
 }
 
 .en-tete{
@@ -29,6 +35,7 @@ h1, h2, h4, ul, dl, p {
     text-decoration: none;
     color: black;
 }
+
 
 .en-tete a:hover {
     color: darkred;
@@ -47,12 +54,9 @@ h1, h2, h4, ul, dl, p {
 
 .slogan{
     text-align: center;
-    margin-top: 10px;
-}
-
-.slogan1 {
     font-family: 'White Star free', sans-serif;
     font-size: 20px;
+    margin-top: 15px
 }
 
 .description_recette dl {
@@ -83,6 +87,13 @@ h1, h2, h4, ul, dl, p {
     justify-content: space-between;
 }
 
+#footer {
+    margin-top: auto;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -97,5 +108,4 @@ h1, h2, h4, ul, dl, p {
     .desc_étapes, .desc_ingrédients {
         margin-left: 10px;
     }
-
 }
