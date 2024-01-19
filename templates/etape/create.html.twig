@@ -1,6 +1,8 @@
-{% set title = "Création d'une nouvelle etape pour la recette : " %}
+{% set title = "Création d'une nouvelle étape pour la recette : " %}
 
 {% extends 'base.html.twig' %}
+
+{% block title %} {{ recette.nom }} {% endblock %}
 
 {% block body %}
 
@@ -15,9 +17,5 @@
     </div>
     {{ form_end(form) }}
 
-
 {% endblock %}
 
-{% block title %}
-    {{ title }}
-{% endblock %}
